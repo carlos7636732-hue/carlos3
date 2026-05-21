@@ -45,7 +45,7 @@ header h1{
 /* MENU */
 
 .menu{
-    width:340px;
+    width:360px;
     background:rgba(0,0,0,0.35);
     padding:20px;
     overflow-y:auto;
@@ -129,6 +129,42 @@ button:hover{
     transform:translate(-50%,-50%);
 }
 
+/* GOLS */
+
+.gol{
+    position:absolute;
+    width:180px;
+    height:70px;
+    left:50%;
+    transform:translateX(-50%);
+    border:5px solid white;
+    background:rgba(255,255,255,0.05);
+    z-index:1;
+}
+
+.gol-topo{
+    top:-5px;
+    border-bottom:none;
+    border-radius:0 0 20px 20px;
+}
+
+.gol-baixo{
+    bottom:-5px;
+    border-top:none;
+    border-radius:20px 20px 0 0;
+}
+
+/* REDE */
+
+.rede{
+    width:100%;
+    height:100%;
+    background-image:
+        linear-gradient(to right, rgba(255,255,255,0.4) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size:15px 15px;
+}
+
 /* JOGADORES */
 
 .jogador{
@@ -146,6 +182,7 @@ button:hover{
     cursor:move;
     user-select:none;
     transition:0.2s;
+    z-index:5;
 }
 
 .jogador:hover{
@@ -183,12 +220,6 @@ button:hover{
     font-weight:bold;
     cursor:pointer;
     font-size:14px;
-    transition:0.2s;
-}
-
-.remover:hover{
-    transform:scale(1.1);
-    background:darkred;
 }
 
 @media(max-width:900px){
@@ -211,7 +242,7 @@ button:hover{
 
 <header>
     <h1>🇧🇷 Criador de Escalações</h1>
-    <p>Monte sua Seleção Brasileira do seu jeito</p>
+    <p>Monte sua Seleção Brasileira</p>
 </header>
 
 <div class="container">
@@ -248,24 +279,41 @@ button:hover{
 
         <div class="lista">
 
-            <div class="item" onclick="preencher('Alisson',1,'GOL')">Alisson</div>
-            <div class="item" onclick="preencher('Ederson',23,'GOL')">Ederson</div>
-            <div class="item" onclick="preencher('Weverton',12,'GOL')">Weverton</div>
+            <!-- GOLEIROS -->
+            <div class="item" onclick="preencher('Alisson',1,'GOL')">Alisson (Liverpool)</div>
+            <div class="item" onclick="preencher('Ederson',23,'GOL')">Ederson (Fenerbahçe)</div>
+            <div class="item" onclick="preencher('Weverton',12,'GOL')">Weverton (Grêmio)</div>
 
-            <div class="item" onclick="preencher('Marquinhos',4,'ZAG')">Marquinhos</div>
-            <div class="item" onclick="preencher('Militão',3,'ZAG')">Militão</div>
-            <div class="item" onclick="preencher('Danilo',2,'LD')">Danilo</div>
-            <div class="item" onclick="preencher('Alex Sandro',6,'LE')">Alex Sandro</div>
+            <!-- LATERAIS -->
+            <div class="item" onclick="preencher('Alex Sandro',6,'LE')">Alex Sandro (Flamengo)</div>
+            <div class="item" onclick="preencher('Danilo',2,'LD')">Danilo (Flamengo)</div>
+            <div class="item" onclick="preencher('Douglas Santos',16,'LE')">Douglas Santos (Zenit)</div>
+            <div class="item" onclick="preencher('Wesley',13,'LD')">Wesley (Roma)</div>
 
-            <div class="item" onclick="preencher('Casemiro',5,'VOL')">Casemiro</div>
-            <div class="item" onclick="preencher('Bruno G.',17,'MEI')">Bruno Guimarães</div>
-            <div class="item" onclick="preencher('Paquetá',8,'MEI')">Paquetá</div>
+            <!-- ZAGUEIROS -->
+            <div class="item" onclick="preencher('Bremer',3,'ZAG')">Bremer (Juventus)</div>
+            <div class="item" onclick="preencher('Gabriel Magalhães',4,'ZAG')">Gabriel Magalhães (Arsenal)</div>
+            <div class="item" onclick="preencher('Ibañez',14,'ZAG')">Ibañez (Al-Ahli)</div>
+            <div class="item" onclick="preencher('Léo Pereira',15,'ZAG')">Léo Pereira (Flamengo)</div>
+            <div class="item" onclick="preencher('Marquinhos',5,'ZAG')">Marquinhos (PSG)</div>
 
-            <div class="item" onclick="preencher('Neymar',10,'CAM')">Neymar</div>
-            <div class="item" onclick="preencher('Vini Jr',7,'PE')">Vini Jr</div>
-            <div class="item" onclick="preencher('Rodrygo',11,'PD')">Rodrygo</div>
-            <div class="item" onclick="preencher('Endrick',9,'ATA')">Endrick</div>
-            <div class="item" onclick="preencher('Raphinha',19,'PD')">Raphinha</div>
+            <!-- MEIO -->
+            <div class="item" onclick="preencher('Bruno Guimarães',17,'MEI')">Bruno Guimarães (Newcastle)</div>
+            <div class="item" onclick="preencher('Casemiro',8,'VOL')">Casemiro (Manchester United)</div>
+            <div class="item" onclick="preencher('Danilo Santos',18,'VOL')">Danilo Santos (Botafogo)</div>
+            <div class="item" onclick="preencher('Fabinho',19,'VOL')">Fabinho (Al-Ittihad)</div>
+            <div class="item" onclick="preencher('Lucas Paquetá',10,'MEI')">Lucas Paquetá (Flamengo)</div>
+
+            <!-- ATAQUE -->
+            <div class="item" onclick="preencher('Endrick',9,'ATA')">Endrick (Lyon)</div>
+            <div class="item" onclick="preencher('Gabriel Martinelli',11,'PE')">Gabriel Martinelli (Arsenal)</div>
+            <div class="item" onclick="preencher('Igor Thiago',21,'ATA')">Igor Thiago (Brentford)</div>
+            <div class="item" onclick="preencher('Luiz Henrique',22,'PD')">Luiz Henrique (Zenit)</div>
+            <div class="item" onclick="preencher('Matheus Cunha',20,'ATA')">Matheus Cunha (Manchester United)</div>
+            <div class="item" onclick="preencher('Neymar',10,'CAM')">Neymar (Santos)</div>
+            <div class="item" onclick="preencher('Raphinha',7,'PD')">Raphinha (Barcelona)</div>
+            <div class="item" onclick="preencher('Rayan',24,'ATA')">Rayan (Bournemouth)</div>
+            <div class="item" onclick="preencher('Vinicius Jr.',7,'PE')">Vinicius Jr. (Real Madrid)</div>
 
         </div>
 
@@ -276,6 +324,16 @@ button:hover{
 
         <div class="linha"></div>
         <div class="circulo"></div>
+
+        <!-- GOL SUPERIOR -->
+        <div class="gol gol-topo">
+            <div class="rede"></div>
+        </div>
+
+        <!-- GOL INFERIOR -->
+        <div class="gol gol-baixo">
+            <div class="rede"></div>
+        </div>
 
     </div>
 
@@ -308,14 +366,10 @@ function criarJogador(nome, numero, posicao, top, left){
 
     moverJogador(jogador);
 
-    /* REMOVER */
-
     const btnRemover = jogador.querySelector(".remover");
 
     btnRemover.addEventListener("click", () => {
-
         jogador.remove();
-
     });
 
 }
@@ -377,72 +431,17 @@ function mudarFormacao(){
         criarJogador("Alisson",1,"GOL","82%","45%");
 
         criarJogador("Danilo",2,"LD","65%","15%");
-        criarJogador("Marquinhos",4,"ZAG","68%","35%");
-        criarJogador("Militão",3,"ZAG","68%","55%");
+        criarJogador("Marquinhos",5,"ZAG","68%","35%");
+        criarJogador("Bremer",3,"ZAG","68%","55%");
         criarJogador("Alex Sandro",6,"LE","65%","75%");
 
-        criarJogador("Casemiro",5,"VOL","45%","30%");
-        criarJogador("Paquetá",8,"MEI","42%","50%");
-        criarJogador("Bruno G.",17,"MEI","45%","70%");
+        criarJogador("Casemiro",8,"VOL","45%","30%");
+        criarJogador("Bruno G.",17,"MEI","42%","50%");
+        criarJogador("Lucas Paquetá",10,"MEI","45%","70%");
 
-        criarJogador("Vini Jr",7,"PE","18%","20%");
+        criarJogador("Vinicius Jr.",7,"PE","18%","20%");
         criarJogador("Endrick",9,"ATA","10%","45%");
-        criarJogador("Rodrygo",11,"PD","18%","70%");
-    }
-
-    if(f === "442"){
-
-        criarJogador("Alisson",1,"GOL","82%","45%");
-
-        criarJogador("Danilo",2,"LD","65%","15%");
-        criarJogador("Marquinhos",4,"ZAG","68%","35%");
-        criarJogador("Militão",3,"ZAG","68%","55%");
-        criarJogador("Alex Sandro",6,"LE","65%","75%");
-
-        criarJogador("Casemiro",5,"VOL","45%","20%");
-        criarJogador("Bruno G.",17,"VOL","45%","40%");
-        criarJogador("Paquetá",8,"MEI","45%","60%");
-        criarJogador("Neymar",10,"CAM","45%","80%");
-
-        criarJogador("Vini Jr",7,"ATA","15%","35%");
-        criarJogador("Rodrygo",11,"ATA","15%","60%");
-    }
-
-    if(f === "4231"){
-
-        criarJogador("Alisson",1,"GOL","82%","45%");
-
-        criarJogador("Danilo",2,"LD","65%","15%");
-        criarJogador("Marquinhos",4,"ZAG","68%","35%");
-        criarJogador("Militão",3,"ZAG","68%","55%");
-        criarJogador("Alex Sandro",6,"LE","65%","75%");
-
-        criarJogador("Casemiro",5,"VOL","52%","35%");
-        criarJogador("Bruno G.",17,"VOL","52%","60%");
-
-        criarJogador("Vini Jr",7,"PE","28%","15%");
-        criarJogador("Neymar",10,"CAM","30%","45%");
-        criarJogador("Rodrygo",11,"PD","28%","75%");
-
-        criarJogador("Endrick",9,"ATA","10%","45%");
-    }
-
-    if(f === "352"){
-
-        criarJogador("Alisson",1,"GOL","82%","45%");
-
-        criarJogador("Marquinhos",4,"ZAG","68%","25%");
-        criarJogador("Militão",3,"ZAG","68%","45%");
-        criarJogador("Beraldo",14,"ZAG","68%","65%");
-
-        criarJogador("Danilo",2,"ALA","45%","10%");
-        criarJogador("Casemiro",5,"VOL","45%","30%");
-        criarJogador("Paquetá",8,"MEI","42%","50%");
-        criarJogador("Bruno G.",17,"MEI","45%","70%");
-        criarJogador("Alex Sandro",6,"ALA","45%","85%");
-
-        criarJogador("Vini Jr",7,"ATA","15%","35%");
-        criarJogador("Endrick",9,"ATA","15%","60%");
+        criarJogador("Raphinha",11,"PD","18%","70%");
     }
 
 }
@@ -468,8 +467,8 @@ function adicionarJogador(){
     if(nome === "" || numero === "" || posicao === ""){
 
         alert("Preencha todos os campos!");
-
         return;
+
     }
 
     criarJogador(nome, numero, posicao, "40%", "40%");
