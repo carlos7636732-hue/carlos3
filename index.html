@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Criador de Escalações Brasil</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#009c3b,#ffdf00);
+    color:white;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+/* HEADER */
+
+header{
+    text-align:center;
+    padding:20px;
+    background:rgba(0,0,0,0.35);
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+}
+
+header h1{
+    font-size:40px;
+}
+
+/* CONTAINER */
+
+.container{
+    display:flex;
+    height:calc(100vh - 100px);
+}
+
+/* MENU */
+
+.menu{
+    width:340px;
+    background:rgba(0,0,0,0.35);
+    padding:20px;
+    overflow-y:auto;
+    border-right:3px solid rgba(255,255,255,0.2);
+}
+
+.menu h2{
+    margin-bottom:10px;
+    text-align:center;
+}
+
+input, select, button{
+    width:100%;
+    padding:12px;
+    margin-bottom:12px;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+}
+
+button{
+    background:#ffdf00;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+.lista{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.item{
+    background:rgba(255,255,255,0.15);
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.item:hover{
+    background:rgba(255,255,255,0.25);
+    transform:scale(1.03);
+}
+
+/* CAMPO */
+
+.campo{
+    flex:1;
+    margin:20px;
+    background:#0b6623;
+    border:5px solid white;
+    border-radius:20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.linha{
+    position:absolute;
+    width:100%;
+    height:4px;
+    background:white;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.circulo{
+    position:absolute;
+    width:180px;
+    height:180px;
+    border:4px solid white;
+    border-radius:50%;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* JOGADORES */
+
+.jogador{
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:rgba(255,255,255,0.15);
+    border:2px solid white;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    cursor:move;
+    user-select:none;
+    transition:0.2s;
+}
+
+.jogador:hover{
+    transform:scale(1.08);
+    background:rgba(255,255,255,0.25);
+}
+
+.numero{
+    font-size:24px;
+    font-weight:bold;
+    color:#ffdf00;
+}
+
+.nome{
+    font-size:14px;
+    font-weight:bold;
+}
+
+.posicao{
+    font-size:12px;
+}
+
+/* BOTÃO REMOVER */
+
+.remover{
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    width:28px;
+    height:28px;
+    border:none;
+    border-radius:50%;
+    background:red;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
+    transition:0.2s;
+}
+
+.remover:hover{
+    transform:scale(1.1);
+    background:darkred;
+}
+
+@media(max-width:900px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .menu{
+        width:100%;
+        height:350px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🇧🇷 Criador de Escalações</h1>
+    <p>Monte sua Seleção Brasileira do seu jeito</p>
+</header>
+
+<div class="container">
+
+    <!-- MENU -->
+    <div class="menu">
+
+        <h2>Formações</h2>
+
+        <select id="formacao">
+            <option value="433">4-3-3</option>
+            <option value="442">4-4-2</option>
+            <option value="4231">4-2-3-1</option>
+            <option value="352">3-5-2</option>
+        </select>
+
+        <button onclick="mudarFormacao()">
+            Aplicar Formação
+        </button>
+
+        <h2>Adicionar Jogador</h2>
+
+        <input type="text" id="nomeJogador" placeholder="Nome do jogador">
+
+        <input type="number" id="numeroJogador" placeholder="Número">
+
+        <input type="text" id="posicaoJogador" placeholder="Posição">
+
+        <button onclick="adicionarJogador()">
+            Adicionar no Campo
+        </button>
+
+        <h2>Jogadores Brasileiros</h2>
+
+        <div class="lista">
+
+            <div class="item" onclick="preencher('Alisson',1,'GOL')">Alisson</div>
+            <div class="item" onclick="preencher('Ederson',23,'GOL')">Ederson</div>
+            <div class="item" onclick="preencher('Weverton',12,'GOL')">Weverton</div>
+
+            <div class="item" onclick="preencher('Marquinhos',4,'ZAG')">Marquinhos</div>
+            <div class="item" onclick="preencher('Militão',3,'ZAG')">Militão</div>
+            <div class="item" onclick="preencher('Danilo',2,'LD')">Danilo</div>
+            <div class="item" onclick="preencher('Alex Sandro',6,'LE')">Alex Sandro</div>
+
+            <div class="item" onclick="preencher('Casemiro',5,'VOL')">Casemiro</div>
+            <div class="item" onclick="preencher('Bruno G.',17,'MEI')">Bruno Guimarães</div>
+            <div class="item" onclick="preencher('Paquetá',8,'MEI')">Paquetá</div>
+
+            <div class="item" onclick="preencher('Neymar',10,'CAM')">Neymar</div>
+            <div class="item" onclick="preencher('Vini Jr',7,'PE')">Vini Jr</div>
+            <div class="item" onclick="preencher('Rodrygo',11,'PD')">Rodrygo</div>
+            <div class="item" onclick="preencher('Endrick',9,'ATA')">Endrick</div>
+            <div class="item" onclick="preencher('Raphinha',19,'PD')">Raphinha</div>
+
+        </div>
+
+    </div>
+
+    <!-- CAMPO -->
+    <div class="campo" id="campo">
+
+        <div class="linha"></div>
+        <div class="circulo"></div>
+
+    </div>
+
+</div>
+
+<script>
+
+const campo = document.getElementById("campo");
+
+/* CRIAR JOGADOR */
+
+function criarJogador(nome, numero, posicao, top, left){
+
+    const jogador = document.createElement("div");
+
+    jogador.classList.add("jogador");
+
+    jogador.style.top = top;
+    jogador.style.left = left;
+
+    jogador.innerHTML = `
+        <button class="remover">✖</button>
+
+        <div class="numero">${numero}</div>
+        <div class="nome">${nome}</div>
+        <div class="posicao">${posicao}</div>
+    `;
+
+    campo.appendChild(jogador);
+
+    moverJogador(jogador);
+
+    /* REMOVER */
+
+    const btnRemover = jogador.querySelector(".remover");
+
+    btnRemover.addEventListener("click", () => {
+
+        jogador.remove();
+
+    });
+
+}
+
+/* MOVER */
+
+function moverJogador(jogador){
+
+    let segurando = false;
+
+    let offsetX, offsetY;
+
+    jogador.addEventListener("mousedown",(e)=>{
+
+        segurando = true;
+
+        offsetX = e.clientX - jogador.offsetLeft;
+        offsetY = e.clientY - jogador.offsetTop;
+
+        jogador.style.zIndex = 1000;
+
+    });
+
+    document.addEventListener("mousemove",(e)=>{
+
+        if(!segurando) return;
+
+        jogador.style.left = (e.clientX - offsetX) + "px";
+        jogador.style.top = (e.clientY - offsetY) + "px";
+
+    });
+
+    document.addEventListener("mouseup", ()=>{
+
+        segurando = false;
+
+    });
+
+}
+
+/* LIMPAR */
+
+function limparCampo(){
+
+    document.querySelectorAll(".jogador").forEach(j => j.remove());
+
+}
+
+/* FORMAÇÕES */
+
+function mudarFormacao(){
+
+    limparCampo();
+
+    const f = document.getElementById("formacao").value;
+
+    if(f === "433"){
+
+        criarJogador("Alisson",1,"GOL","82%","45%");
+
+        criarJogador("Danilo",2,"LD","65%","15%");
+        criarJogador("Marquinhos",4,"ZAG","68%","35%");
+        criarJogador("Militão",3,"ZAG","68%","55%");
+        criarJogador("Alex Sandro",6,"LE","65%","75%");
+
+        criarJogador("Casemiro",5,"VOL","45%","30%");
+        criarJogador("Paquetá",8,"MEI","42%","50%");
+        criarJogador("Bruno G.",17,"MEI","45%","70%");
+
+        criarJogador("Vini Jr",7,"PE","18%","20%");
+        criarJogador("Endrick",9,"ATA","10%","45%");
+        criarJogador("Rodrygo",11,"PD","18%","70%");
+    }
+
+    if(f === "442"){
+
+        criarJogador("Alisson",1,"GOL","82%","45%");
+
+        criarJogador("Danilo",2,"LD","65%","15%");
+        criarJogador("Marquinhos",4,"ZAG","68%","35%");
+        criarJogador("Militão",3,"ZAG","68%","55%");
+        criarJogador("Alex Sandro",6,"LE","65%","75%");
+
+        criarJogador("Casemiro",5,"VOL","45%","20%");
+        criarJogador("Bruno G.",17,"VOL","45%","40%");
+        criarJogador("Paquetá",8,"MEI","45%","60%");
+        criarJogador("Neymar",10,"CAM","45%","80%");
+
+        criarJogador("Vini Jr",7,"ATA","15%","35%");
+        criarJogador("Rodrygo",11,"ATA","15%","60%");
+    }
+
+    if(f === "4231"){
+
+        criarJogador("Alisson",1,"GOL","82%","45%");
+
+        criarJogador("Danilo",2,"LD","65%","15%");
+        criarJogador("Marquinhos",4,"ZAG","68%","35%");
+        criarJogador("Militão",3,"ZAG","68%","55%");
+        criarJogador("Alex Sandro",6,"LE","65%","75%");
+
+        criarJogador("Casemiro",5,"VOL","52%","35%");
+        criarJogador("Bruno G.",17,"VOL","52%","60%");
+
+        criarJogador("Vini Jr",7,"PE","28%","15%");
+        criarJogador("Neymar",10,"CAM","30%","45%");
+        criarJogador("Rodrygo",11,"PD","28%","75%");
+
+        criarJogador("Endrick",9,"ATA","10%","45%");
+    }
+
+    if(f === "352"){
+
+        criarJogador("Alisson",1,"GOL","82%","45%");
+
+        criarJogador("Marquinhos",4,"ZAG","68%","25%");
+        criarJogador("Militão",3,"ZAG","68%","45%");
+        criarJogador("Beraldo",14,"ZAG","68%","65%");
+
+        criarJogador("Danilo",2,"ALA","45%","10%");
+        criarJogador("Casemiro",5,"VOL","45%","30%");
+        criarJogador("Paquetá",8,"MEI","42%","50%");
+        criarJogador("Bruno G.",17,"MEI","45%","70%");
+        criarJogador("Alex Sandro",6,"ALA","45%","85%");
+
+        criarJogador("Vini Jr",7,"ATA","15%","35%");
+        criarJogador("Endrick",9,"ATA","15%","60%");
+    }
+
+}
+
+/* PREENCHER */
+
+function preencher(nome, numero, posicao){
+
+    document.getElementById("nomeJogador").value = nome;
+    document.getElementById("numeroJogador").value = numero;
+    document.getElementById("posicaoJogador").value = posicao;
+
+}
+
+/* ADICIONAR */
+
+function adicionarJogador(){
+
+    const nome = document.getElementById("nomeJogador").value;
+    const numero = document.getElementById("numeroJogador").value;
+    const posicao = document.getElementById("posicaoJogador").value;
+
+    if(nome === "" || numero === "" || posicao === ""){
+
+        alert("Preencha todos os campos!");
+
+        return;
+    }
+
+    criarJogador(nome, numero, posicao, "40%", "40%");
+
+}
+
+/* INICIAR */
+
+mudarFormacao();
+
+</script>
+
+</body>
+</html>
