@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🇧🇷 Seleção Brasileira ULTRA</title>
+<title>🇧🇷 Seleção Brasileira ULTRA FIFA</title>
 
 <style>
 
@@ -51,7 +51,7 @@ font-size:28px;
 font-weight:bold;
 }
 
-/* CRONÔMETRO */
+/* CRONOMETRO */
 
 .cronometro{
 font-size:26px;
@@ -69,7 +69,7 @@ height:calc(100vh - 90px);
 /* MENU */
 
 .menu{
-width:380px;
+width:360px;
 background:rgba(0,0,0,.45);
 backdrop-filter:blur(10px);
 padding:20px;
@@ -124,39 +124,6 @@ transition:.2s;
 .item:hover{
 background:rgba(255,255,255,.2);
 transform:translateX(5px);
-}
-
-/* HISTÓRIA */
-
-.historia{
-margin-top:20px;
-padding:15px;
-background:rgba(255,255,255,.05);
-border-radius:15px;
-}
-
-.card-historia{
-background:rgba(0,0,0,.3);
-padding:12px;
-border-radius:12px;
-margin-bottom:10px;
-border-left:5px solid #ffdf00;
-transition:.2s;
-}
-
-.card-historia:hover{
-transform:scale(1.02);
-background:rgba(255,255,255,.1);
-}
-
-.card-historia h3{
-color:#ffdf00;
-margin-bottom:5px;
-}
-
-.card-historia p{
-font-size:14px;
-line-height:1.4;
 }
 
 /* CAMPO */
@@ -227,8 +194,8 @@ border-top:none;
 
 .jogador{
 position:absolute;
-width:100px;
-height:100px;
+width:120px;
+height:150px;
 background:linear-gradient(#ffdf00,#d4b200);
 color:black;
 border-radius:18px;
@@ -252,15 +219,36 @@ transform:scale(1.08);
 }
 
 .numero{
-font-size:28px;
+font-size:30px;
 }
 
 .nome{
-font-size:13px;
+font-size:14px;
+margin-top:5px;
 }
 
 .posicao{
-font-size:11px;
+font-size:12px;
+margin-bottom:5px;
+}
+
+/* STATS FIFA */
+
+.stats{
+margin-top:5px;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:4px;
+padding:5px;
+}
+
+.stats span{
+background:rgba(0,0,0,.2);
+padding:3px 5px;
+border-radius:6px;
+font-size:10px;
+font-weight:bold;
 }
 
 /* REMOVER */
@@ -288,7 +276,7 @@ flex-direction:column;
 
 .menu{
 width:100%;
-height:350px;
+height:320px;
 }
 
 .campo{
@@ -366,50 +354,6 @@ Adicionar Jogador
 
 <div class="lista" id="listaJogadores"></div>
 
-<!-- HISTÓRIA -->
-
-<div class="historia">
-
-<h2>🏆 História do Brasil nas Copas</h2>
-
-<div class="card-historia">
-<h3>1958 🇸🇪</h3>
-<p>
-O Brasil conquistou sua primeira Copa do Mundo na Suécia.
-Pelé brilhou e a Seleção venceu a Suécia por 5x2.
-</p>
-</div>
-
-<div class="card-historia">
-<h3>1962 🇨🇱</h3>
-<p>
-No Chile, o Brasil conquistou o bicampeonato mundial com Garrincha liderando a equipe.
-</p>
-</div>
-
-<div class="card-historia">
-<h3>1970 🇲🇽</h3>
-<p>
-Com Pelé, Jairzinho e Rivellino, o Brasil venceu a Itália por 4x1.
-</p>
-</div>
-
-<div class="card-historia">
-<h3>1994 🇺🇸</h3>
-<p>
-Romário foi o destaque do tetracampeonato conquistado nos Estados Unidos.
-</p>
-</div>
-
-<div class="card-historia">
-<h3>2002 🇯🇵🇰🇷</h3>
-<p>
-Ronaldo marcou dois gols contra a Alemanha e o Brasil conquistou o pentacampeonato.
-</p>
-</div>
-
-</div>
-
 </div>
 
 <!-- CAMPO -->
@@ -476,7 +420,7 @@ const jogadores = [
 const lista = document.getElementById("listaJogadores");
 const campo = document.getElementById("campo");
 
-/* MOSTRAR BANCO */
+/* LISTA */
 
 jogadores.forEach(j => {
 
@@ -517,6 +461,15 @@ jogador.innerHTML = `
 <div class="nome">${nome}</div>
 
 <div class="posicao">${pos}</div>
+
+<div class="stats">
+<span>⚡ 95</span>
+<span>🎯 88</span>
+<span>🧠 90</span>
+<span>🪄 94</span>
+<span>🛡 40</span>
+<span>💪 82</span>
+</div>
 `;
 
 campo.appendChild(jogador);
@@ -570,14 +523,14 @@ segurando = false;
 
 });
 
-/* TOUCH MOBILE */
+/* MOBILE */
 
 jogador.addEventListener("touchmove", e => {
 
 const touch = e.touches[0];
 
-jogador.style.left = touch.clientX - 50 + "px";
-jogador.style.top = touch.clientY - 50 + "px";
+jogador.style.left = touch.clientX - 60 + "px";
+jogador.style.top = touch.clientY - 75 + "px";
 
 });
 
@@ -603,7 +556,7 @@ criarJogador(nome,numero,pos,"40%","40%");
 
 }
 
-/* RESETAR */
+/* RESET */
 
 function resetarCampo(){
 
@@ -695,7 +648,7 @@ criarJogador("Raphinha",11,"PD","18%","70%");
 
 }
 
-/* CRONÔMETRO */
+/* CRONOMETRO */
 
 let segundos = 0;
 
@@ -716,7 +669,7 @@ document.getElementById("cronometro")
 
 },1000);
 
-/* SOM TORCIDA */
+/* SOM */
 
 document.body.addEventListener("click",()=>{
 
