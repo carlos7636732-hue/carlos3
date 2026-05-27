@@ -195,7 +195,7 @@ border-top:none;
 .jogador{
 position:absolute;
 width:120px;
-height:150px;
+height:170px;
 background:linear-gradient(#ffdf00,#d4b200);
 color:black;
 border-radius:18px;
@@ -218,6 +218,21 @@ transition:.2s;
 transform:scale(1.08);
 }
 
+/* OVER */
+
+.overall{
+position:absolute;
+top:8px;
+left:8px;
+background:black;
+color:#ffdf00;
+padding:5px 8px;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+box-shadow:0 0 10px #ffdf00;
+}
+
 .numero{
 font-size:30px;
 }
@@ -225,6 +240,7 @@ font-size:30px;
 .nome{
 font-size:14px;
 margin-top:5px;
+text-align:center;
 }
 
 .posicao{
@@ -295,7 +311,7 @@ margin:10px;
 <div class="topo">
 
 <div class="titulo">
-🇧🇷 SELEÇÃO BRASILEIRA ULTRA
+🇧🇷 SELEÇÃO BRASILEIRA ULTRA FIFA
 </div>
 
 <div class="placar">
@@ -346,6 +362,8 @@ Resetar Campo
 
 <input type="text" id="posicao" placeholder="Posição">
 
+<input type="number" id="overall" placeholder="Overall">
+
 <button onclick="adicionarJogador()">
 Adicionar Jogador
 </button>
@@ -384,36 +402,36 @@ Adicionar Jogador
 
 const jogadores = [
 
-["Alisson",1,"GOL"],
-["Ederson",23,"GOL"],
-["Weverton",12,"GOL"],
+["Alisson",1,"GOL",89],
+["Ederson",23,"GOL",88],
+["Weverton",12,"GOL",82],
 
-["Alex Sandro",6,"LE"],
-["Danilo",2,"LD"],
-["Douglas Santos",16,"LE"],
-["Wesley",13,"LD"],
+["Alex Sandro",6,"LE",81],
+["Danilo",2,"LD",82],
+["Douglas Santos",16,"LE",79],
+["Wesley",13,"LD",78],
 
-["Bremer",3,"ZAG"],
-["Gabriel Magalhães",4,"ZAG"],
-["Ibañez",14,"ZAG"],
-["Léo Pereira",15,"ZAG"],
-["Marquinhos",5,"ZAG"],
+["Bremer",3,"ZAG",86],
+["Gabriel Magalhães",4,"ZAG",85],
+["Ibañez",14,"ZAG",82],
+["Léo Pereira",15,"ZAG",80],
+["Marquinhos",5,"ZAG",87],
 
-["Bruno Guimarães",17,"MEI"],
-["Casemiro",8,"VOL"],
-["Danilo Santos",18,"VOL"],
-["Fabinho",19,"VOL"],
-["Lucas Paquetá",10,"MEI"],
+["Bruno Guimarães",17,"MEI",86],
+["Casemiro",8,"VOL",84],
+["Danilo Santos",18,"VOL",78],
+["Fabinho",19,"VOL",83],
+["Lucas Paquetá",10,"MEI",85],
 
-["Endrick",9,"ATA"],
-["Gabriel Martinelli",11,"PE"],
-["Igor Thiago",21,"ATA"],
-["Luiz Henrique",22,"PD"],
-["Matheus Cunha",20,"ATA"],
-["Neymar",10,"CAM"],
-["Raphinha",7,"PD"],
-["Rayan",24,"ATA"],
-["Vinicius Jr.",7,"PE"]
+["Endrick",9,"ATA",82],
+["Gabriel Martinelli",11,"PE",85],
+["Igor Thiago",21,"ATA",79],
+["Luiz Henrique",22,"PD",81],
+["Matheus Cunha",20,"ATA",84],
+["Neymar",10,"CAM",90],
+["Raphinha",7,"PD",87],
+["Rayan",24,"ATA",76],
+["Vinicius Jr.",7,"PE",91]
 
 ];
 
@@ -428,13 +446,14 @@ const div = document.createElement("div");
 
 div.className = "item";
 
-div.innerHTML = `${j[0]} (${j[2]})`;
+div.innerHTML = `${j[0]} (${j[2]}) - OVR ${j[3]}`;
 
 div.onclick = () => {
 
 document.getElementById("nome").value = j[0];
 document.getElementById("numero").value = j[1];
 document.getElementById("posicao").value = j[2];
+document.getElementById("overall").value = j[3];
 
 };
 
@@ -444,7 +463,7 @@ lista.appendChild(div);
 
 /* CRIAR JOGADOR */
 
-function criarJogador(nome,numero,pos,top,left){
+function criarJogador(nome,numero,pos,overall,top,left){
 
 const jogador = document.createElement("div");
 
@@ -455,6 +474,8 @@ jogador.style.left = left;
 
 jogador.innerHTML = `
 <button class="remover">X</button>
+
+<div class="overall">${overall}</div>
 
 <div class="numero">${numero}</div>
 
@@ -543,8 +564,9 @@ function adicionarJogador(){
 const nome = document.getElementById("nome").value;
 const numero = document.getElementById("numero").value;
 const pos = document.getElementById("posicao").value;
+const overall = document.getElementById("overall").value;
 
-if(!nome || !numero || !pos){
+if(!nome || !numero || !pos || !overall){
 
 alert("Preencha tudo!");
 
@@ -552,7 +574,7 @@ return;
 
 }
 
-criarJogador(nome,numero,pos,"40%","40%");
+criarJogador(nome,numero,pos,overall,"40%","40%");
 
 }
 
@@ -631,20 +653,20 @@ function mudarFormacao(){
 
 resetarCampo();
 
-criarJogador("Alisson",1,"GOL","82%","45%");
+criarJogador("Alisson",1,"GOL",89,"82%","45%");
 
-criarJogador("Danilo",2,"LD","65%","15%");
-criarJogador("Bremer",3,"ZAG","68%","35%");
-criarJogador("Marquinhos",5,"ZAG","68%","55%");
-criarJogador("Alex Sandro",6,"LE","65%","75%");
+criarJogador("Danilo",2,"LD",82,"65%","15%");
+criarJogador("Bremer",3,"ZAG",86,"68%","35%");
+criarJogador("Marquinhos",5,"ZAG",87,"68%","55%");
+criarJogador("Alex Sandro",6,"LE",81,"65%","75%");
 
-criarJogador("Casemiro",8,"VOL","45%","30%");
-criarJogador("Bruno G.",17,"MEI","42%","50%");
-criarJogador("Lucas Paquetá",10,"MEI","45%","70%");
+criarJogador("Casemiro",8,"VOL",84,"45%","30%");
+criarJogador("Bruno G.",17,"MEI",86,"42%","50%");
+criarJogador("Lucas Paquetá",10,"MEI",85,"45%","70%");
 
-criarJogador("Vinicius Jr.",7,"PE","18%","20%");
-criarJogador("Endrick",9,"ATA","10%","45%");
-criarJogador("Raphinha",11,"PD","18%","70%");
+criarJogador("Vinicius Jr.",7,"PE",91,"18%","20%");
+criarJogador("Endrick",9,"ATA",82,"10%","45%");
+criarJogador("Raphinha",11,"PD",87,"18%","70%");
 
 }
 
