@@ -1,27 +1,10 @@
-<!--
-PROJETO ULTRA:
-- Visual FIFA
-- Gramado texturizado
-- Glow neon
-- Jogadores arrastáveis
-- Mobile touch
-- Banco de reservas
-- Salvar escalação
-- Carregar escalação
-- Resetar
-- Placar
-- Cronômetro
-- Som torcida
-- Formação inteligente
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Seleção Brasileira Ultra</title>
+<title>🇧🇷 Seleção Brasileira ULTRA</title>
 
 <style>
 
@@ -34,7 +17,7 @@ font-family:Arial,sans-serif;
 
 body{
 background:
-linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
 url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1600');
 background-size:cover;
 background-position:center;
@@ -51,7 +34,7 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px;
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 }
 
 .titulo{
@@ -59,6 +42,21 @@ font-size:32px;
 font-weight:bold;
 color:#ffdf00;
 text-shadow:0 0 20px #ffdf00;
+}
+
+/* PLACAR */
+
+.placar{
+font-size:28px;
+font-weight:bold;
+}
+
+/* CRONO */
+
+.cronometro{
+font-size:26px;
+color:#ffdf00;
+text-shadow:0 0 10px #ffdf00;
 }
 
 /* CONTAINER */
@@ -79,12 +77,13 @@ overflow-y:auto;
 }
 
 .menu h2{
-margin:15px 0;
+margin-bottom:10px;
+margin-top:15px;
 color:#ffdf00;
 }
 
-button,
 input,
+button,
 select{
 width:100%;
 padding:12px;
@@ -103,7 +102,7 @@ transition:.2s;
 
 button:hover{
 transform:scale(1.03);
-box-shadow:0 0 20px #ffdf00;
+box-shadow:0 0 15px #ffdf00;
 }
 
 /* LISTA */
@@ -120,12 +119,11 @@ border-radius:10px;
 background:rgba(255,255,255,.08);
 cursor:pointer;
 transition:.2s;
-border:1px solid rgba(255,255,255,.1);
 }
 
 .item:hover{
-transform:translateX(5px);
 background:rgba(255,255,255,.2);
+transform:translateX(5px);
 }
 
 /* CAMPO */
@@ -133,10 +131,11 @@ background:rgba(255,255,255,.2);
 .campo{
 flex:1;
 margin:20px;
+border-radius:20px;
 position:relative;
-border-radius:25px;
 overflow:hidden;
 border:4px solid white;
+
 background:
 repeating-linear-gradient(
 90deg,
@@ -149,7 +148,7 @@ repeating-linear-gradient(
 
 /* LINHAS */
 
-.linha-meio{
+.linha{
 position:absolute;
 width:100%;
 height:4px;
@@ -158,7 +157,7 @@ top:50%;
 transform:translateY(-50%);
 }
 
-.centro{
+.circulo{
 position:absolute;
 width:180px;
 height:180px;
@@ -181,12 +180,12 @@ border:5px solid white;
 z-index:2;
 }
 
-.topo-gol{
+.gol-topo{
 top:-5px;
 border-bottom:none;
 }
 
-.baixo-gol{
+.gol-baixo{
 bottom:-5px;
 border-top:none;
 }
@@ -197,21 +196,22 @@ border-top:none;
 position:absolute;
 width:100px;
 height:100px;
-background:linear-gradient(#ffdf00,#d1b400);
+background:linear-gradient(#ffdf00,#d4b200);
 color:black;
 border-radius:18px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-cursor:grab;
 font-weight:bold;
+cursor:grab;
+user-select:none;
+
 box-shadow:
 0 0 10px #ffdf00,
-0 0 30px rgba(255,223,0,.6);
-transition:.15s;
-user-select:none;
-z-index:10;
+0 0 25px rgba(255,223,0,.7);
+
+transition:.2s;
 }
 
 .jogador:hover{
@@ -226,7 +226,7 @@ font-size:28px;
 font-size:13px;
 }
 
-.pos{
+.posicao{
 font-size:11px;
 }
 
@@ -245,33 +245,6 @@ color:white;
 cursor:pointer;
 }
 
-/* PLACAR */
-
-.placar{
-display:flex;
-gap:20px;
-font-size:28px;
-font-weight:bold;
-align-items:center;
-}
-
-/* CRONO */
-
-.crono{
-font-size:25px;
-color:#ffdf00;
-text-shadow:0 0 10px #ffdf00;
-}
-
-/* BANCO */
-
-.banco{
-margin-top:20px;
-padding:10px;
-background:rgba(255,255,255,.05);
-border-radius:15px;
-}
-
 /* MOBILE */
 
 @media(max-width:900px){
@@ -287,7 +260,6 @@ height:320px;
 
 .campo{
 margin:10px;
-height:100%;
 }
 
 }
@@ -296,6 +268,8 @@ height:100%;
 </head>
 
 <body>
+
+<!-- TOPO -->
 
 <div class="topo">
 
@@ -307,7 +281,7 @@ height:100%;
 BRA 0 x 0 ARG
 </div>
 
-<div class="crono" id="cronometro">
+<div class="cronometro" id="cronometro">
 00:00
 </div>
 
@@ -352,7 +326,7 @@ Resetar Campo
 <input type="text" id="posicao" placeholder="Posição">
 
 <button onclick="adicionarJogador()">
-Adicionar
+Adicionar Jogador
 </button>
 
 <h2>Banco de Reservas</h2>
@@ -365,17 +339,19 @@ Adicionar
 
 <div class="campo" id="campo">
 
-<div class="linha-meio"></div>
+<div class="linha"></div>
 
-<div class="centro"></div>
+<div class="circulo"></div>
 
-<div class="gol topo-gol"></div>
+<div class="gol gol-topo"></div>
 
-<div class="gol baixo-gol"></div>
+<div class="gol gol-baixo"></div>
+
+</div>
 
 </div>
 
-</div>
+<!-- SOM -->
 
 <audio id="torcida" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4d4db9c2db.mp3?filename=stadium-crowd-ambience-110673.mp3" type="audio/mpeg">
@@ -423,7 +399,7 @@ const jogadores = [
 const lista = document.getElementById("listaJogadores");
 const campo = document.getElementById("campo");
 
-/* MOSTRAR BANCO */
+/* MOSTRAR LISTA */
 
 jogadores.forEach(j => {
 
@@ -458,22 +434,28 @@ jogador.style.left = left;
 
 jogador.innerHTML = `
 <button class="remover">X</button>
+
 <div class="numero">${numero}</div>
+
 <div class="nome">${nome}</div>
-<div class="pos">${pos}</div>
+
+<div class="posicao">${pos}</div>
 `;
 
 campo.appendChild(jogador);
 
 /* REMOVER */
 
-jogador.querySelector(".remover").onclick = () => {
+jogador.querySelector(".remover").onclick = ()=>{
+
 jogador.remove();
+
 };
 
 /* DRAG */
 
 let segurando = false;
+
 let offsetX, offsetY;
 
 jogador.addEventListener("mousedown", e => {
@@ -491,8 +473,6 @@ if(!segurando) return;
 
 let x = e.clientX - offsetX;
 let y = e.clientY - offsetY;
-
-/* LIMITES */
 
 const maxX = campo.clientWidth - jogador.clientWidth;
 const maxY = campo.clientHeight - jogador.clientHeight;
@@ -513,7 +493,7 @@ segurando = false;
 
 });
 
-/* TOUCH MOBILE */
+/* MOBILE TOUCH */
 
 jogador.addEventListener("touchmove", e => {
 
@@ -535,19 +515,26 @@ const numero = document.getElementById("numero").value;
 const pos = document.getElementById("posicao").value;
 
 if(!nome || !numero || !pos){
-alert("Preencha tudo");
+
+alert("Preencha tudo!");
+
 return;
+
 }
 
 criarJogador(nome,numero,pos,"40%","40%");
 
 }
 
-/* RESET */
+/* RESETAR */
 
 function resetarCampo(){
 
-document.querySelectorAll(".jogador").forEach(j=>j.remove());
+document.querySelectorAll(".jogador").forEach(j=>{
+
+j.remove();
+
+});
 
 }
 
@@ -569,7 +556,10 @@ left:j.style.left
 
 });
 
-localStorage.setItem("escalacaoBrasil",JSON.stringify(dados));
+localStorage.setItem(
+"escalacaoBrasil",
+JSON.stringify(dados)
+);
 
 alert("Escalação salva!");
 
@@ -581,7 +571,10 @@ function carregarEscalacao(){
 
 resetarCampo();
 
-const dados = JSON.parse(localStorage.getItem("escalacaoBrasil"));
+const dados =
+JSON.parse(
+localStorage.getItem("escalacaoBrasil")
+);
 
 if(!dados) return;
 
@@ -598,12 +591,6 @@ div.style.left = d.left;
 
 campo.appendChild(div);
 
-div.querySelector(".remover").onclick = ()=>{
-
-div.remove();
-
-};
-
 });
 
 }
@@ -615,6 +602,7 @@ function mudarFormacao(){
 resetarCampo();
 
 criarJogador("Alisson",1,"GOL","82%","45%");
+
 criarJogador("Danilo",2,"LD","65%","15%");
 criarJogador("Bremer",3,"ZAG","68%","35%");
 criarJogador("Marquinhos",5,"ZAG","68%","55%");
@@ -638,14 +626,20 @@ setInterval(()=>{
 
 segundos++;
 
-let min = String(Math.floor(segundos/60)).padStart(2,"0");
-let seg = String(segundos%60).padStart(2,"0");
+let min =
+String(Math.floor(segundos/60))
+.padStart(2,"0");
 
-document.getElementById("cronometro").innerHTML = `${min}:${seg}`;
+let seg =
+String(segundos%60)
+.padStart(2,"0");
+
+document.getElementById("cronometro")
+.innerHTML = `${min}:${seg}`;
 
 },1000);
 
-/* SOM */
+/* SOM TORCIDA */
 
 document.body.addEventListener("click",()=>{
 
