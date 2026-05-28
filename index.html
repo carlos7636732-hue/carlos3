@@ -1,29 +1,18 @@
-<!--
-PROJETO ULTRA:
-- Visual FIFA
-- Gramado texturizado
-- Glow neon
-- Jogadores arrastáveis
-- Mobile touch
-- Banco de reservas
-- Salvar escalação
-- Carregar escalação
-- Resetar
-- Placar
-- Cronômetro
-- Som torcida
-- Formação inteligente
--->
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Seleção Brasileira Ultra</title>
+<title>🇧🇷 Seleção Brasileira Ultra FIFA</title>
 
 <style>
+
+/* ========================================= */
+/* RESET */
+/* ========================================= */
 
 *{
 margin:0;
@@ -34,47 +23,243 @@ font-family:Arial,sans-serif;
 
 body{
 background:
-linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
 url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1600');
+
 background-size:cover;
 background-position:center;
+
 color:white;
+
 overflow:hidden;
 }
 
+/* ========================================= */
+/* INTRO FIFA */
+/* ========================================= */
+
+#intro{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:
+linear-gradient(rgba(0,0,0,.85),rgba(0,0,0,.85)),
+url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1600');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+z-index:999999;
+
+animation:sumirIntro 5s forwards;
+
+}
+
+/* CONTEÚDO */
+
+.introConteudo{
+
+text-align:center;
+
+animation:zoomIntro 2s ease;
+
+}
+
+/* LOGO */
+
+.logoIntro{
+
+font-size:70px;
+
+color:#ffdf00;
+
+text-shadow:
+0 0 20px #ffdf00,
+0 0 40px #ffdf00,
+0 0 80px white;
+
+margin-bottom:20px;
+
+animation:pulsar 1.5s infinite;
+
+}
+
+/* SUB */
+
+.subIntro{
+
+font-size:28px;
+
+letter-spacing:8px;
+
+color:white;
+
+margin-bottom:40px;
+
+text-shadow:
+0 0 10px white;
+
+}
+
+/* BOLA */
+
+.bolaIntro{
+
+font-size:90px;
+
+animation:girar 2s linear infinite;
+
+filter:
+drop-shadow(0 0 20px white);
+
+}
+
+/* ========================================= */
+/* ANIMAÇÕES */
+/* ========================================= */
+
+@keyframes girar{
+
+from{
+transform:rotate(0deg);
+}
+
+to{
+transform:rotate(360deg);
+}
+
+}
+
+@keyframes pulsar{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.1);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@keyframes zoomIntro{
+
+from{
+transform:scale(.5);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+@keyframes sumirIntro{
+
+0%{
+opacity:1;
+visibility:visible;
+}
+
+80%{
+opacity:1;
+}
+
+100%{
+opacity:0;
+visibility:hidden;
+}
+
+}
+
+/* ========================================= */
 /* TOPO */
+/* ========================================= */
 
 .topo{
 height:90px;
+
 background:rgba(0,0,0,.5);
+
 display:flex;
 justify-content:space-between;
 align-items:center;
+
 padding:20px;
-backdrop-filter:blur(8px);
+
+backdrop-filter:blur(10px);
 }
 
 .titulo{
 font-size:32px;
 font-weight:bold;
+
 color:#ffdf00;
-text-shadow:0 0 20px #ffdf00;
+
+text-shadow:
+0 0 20px #ffdf00;
 }
 
+/* ========================================= */
+/* PLACAR */
+/* ========================================= */
+
+.placar{
+font-size:28px;
+font-weight:bold;
+}
+
+/* ========================================= */
+/* CRONO */
+/* ========================================= */
+
+.crono{
+font-size:26px;
+
+color:#ffdf00;
+
+text-shadow:
+0 0 10px #ffdf00;
+}
+
+/* ========================================= */
 /* CONTAINER */
+/* ========================================= */
 
 .container{
 display:flex;
 height:calc(100vh - 90px);
 }
 
+/* ========================================= */
 /* MENU */
+/* ========================================= */
 
 .menu{
 width:360px;
+
 background:rgba(0,0,0,.45);
+
 backdrop-filter:blur(10px);
+
 padding:20px;
+
 overflow-y:auto;
 }
 
@@ -83,30 +268,49 @@ margin:15px 0;
 color:#ffdf00;
 }
 
+/* INPUTS */
+
 button,
 input,
 select{
+
 width:100%;
+
 padding:12px;
+
 margin-bottom:10px;
+
 border:none;
 border-radius:12px;
+
 font-size:15px;
 }
 
+/* BOTÕES */
+
 button{
+
 background:#ffdf00;
+
 font-weight:bold;
+
 cursor:pointer;
+
 transition:.2s;
 }
 
 button:hover{
+
 transform:scale(1.03);
-box-shadow:0 0 20px #ffdf00;
+
+box-shadow:
+0 0 20px #ffdf00;
+
 }
 
+/* ========================================= */
 /* LISTA */
+/* ========================================= */
 
 .lista{
 display:flex;
@@ -115,28 +319,46 @@ gap:8px;
 }
 
 .item{
+
 padding:10px;
+
 border-radius:10px;
+
 background:rgba(255,255,255,.08);
+
 cursor:pointer;
+
 transition:.2s;
+
 border:1px solid rgba(255,255,255,.1);
 }
 
 .item:hover{
+
 transform:translateX(5px);
+
 background:rgba(255,255,255,.2);
+
 }
 
+/* ========================================= */
 /* CAMPO */
+/* ========================================= */
 
 .campo{
+
 flex:1;
+
 margin:20px;
+
 position:relative;
+
 border-radius:25px;
+
 overflow:hidden;
+
 border:4px solid white;
+
 background:
 repeating-linear-gradient(
 90deg,
@@ -145,39 +367,58 @@ repeating-linear-gradient(
 #0d6d28 80px,
 #0d6d28 160px
 );
+
 }
 
 /* LINHAS */
 
 .linha-meio{
+
 position:absolute;
+
 width:100%;
 height:4px;
+
 background:white;
+
 top:50%;
+
 transform:translateY(-50%);
 }
 
 .centro{
+
 position:absolute;
+
 width:180px;
 height:180px;
+
 border:4px solid white;
 border-radius:50%;
+
 top:50%;
 left:50%;
+
 transform:translate(-50%,-50%);
 }
 
+/* ========================================= */
 /* GOLS */
+/* ========================================= */
 
 .gol{
+
 position:absolute;
+
 width:180px;
 height:70px;
+
 left:50%;
+
 transform:translateX(-50%);
+
 border:5px solid white;
+
 z-index:2;
 }
 
@@ -191,40 +432,85 @@ bottom:-5px;
 border-top:none;
 }
 
+/* ========================================= */
 /* JOGADORES */
+/* ========================================= */
 
 .jogador{
+
 position:absolute;
+
 width:100px;
 height:100px;
-background:linear-gradient(#ffdf00,#d1b400);
+
+background:
+linear-gradient(#ffdf00,#d1b400);
+
 color:black;
+
 border-radius:18px;
+
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+
 cursor:grab;
+
 font-weight:bold;
+
 box-shadow:
 0 0 10px #ffdf00,
 0 0 30px rgba(255,223,0,.6);
+
 transition:.15s;
+
 user-select:none;
+
 z-index:10;
 }
 
 .jogador:hover{
+
 transform:scale(1.08);
+
 }
+
+/* OVERALL */
+
+.overall{
+
+position:absolute;
+
+top:-10px;
+left:-10px;
+
+background:black;
+
+color:#ffdf00;
+
+padding:6px 8px;
+
+border-radius:50%;
+
+font-size:14px;
+
+border:2px solid #ffdf00;
+}
+
+/* NÚMERO */
 
 .numero{
 font-size:28px;
 }
 
+/* NOME */
+
 .nome{
 font-size:13px;
 }
+
+/* POS */
 
 .pos{
 font-size:11px;
@@ -233,46 +519,28 @@ font-size:11px;
 /* REMOVER */
 
 .remover{
+
 position:absolute;
+
 top:-8px;
 right:-8px;
+
 width:25px;
 height:25px;
+
 border:none;
 border-radius:50%;
+
 background:red;
+
 color:white;
+
 cursor:pointer;
 }
 
-/* PLACAR */
-
-.placar{
-display:flex;
-gap:20px;
-font-size:28px;
-font-weight:bold;
-align-items:center;
-}
-
-/* CRONO */
-
-.crono{
-font-size:25px;
-color:#ffdf00;
-text-shadow:0 0 10px #ffdf00;
-}
-
-/* BANCO */
-
-.banco{
-margin-top:20px;
-padding:10px;
-background:rgba(255,255,255,.05);
-border-radius:15px;
-}
-
+/* ========================================= */
 /* MOBILE */
+/* ========================================= */
 
 @media(max-width:900px){
 
@@ -290,12 +558,49 @@ margin:10px;
 height:100%;
 }
 
+.logoIntro{
+font-size:40px;
+}
+
+.subIntro{
+font-size:18px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- ========================================= -->
+<!-- INTRO FIFA -->
+<!-- ========================================= -->
+
+<div id="intro">
+
+<div class="introConteudo">
+
+<h1 class="logoIntro">
+🇧🇷 SELEÇÃO BRASILEIRA
+</h1>
+
+<p class="subIntro">
+ULTRA FIFA EXPERIENCE
+</p>
+
+<div class="bolaIntro">
+⚽
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+<!-- TOPO -->
+<!-- ========================================= -->
 
 <div class="topo">
 
@@ -313,18 +618,24 @@ BRA 0 x 0 ARG
 
 </div>
 
+<!-- ========================================= -->
+<!-- CONTAINER -->
+<!-- ========================================= -->
+
 <div class="container">
 
 <!-- MENU -->
 
 <div class="menu">
 
-<h2>Formação</h2>
+<h2>⚽ Formação</h2>
 
 <select id="formacao">
+
 <option value="433">4-3-3</option>
 <option value="442">4-4-2</option>
 <option value="352">3-5-2</option>
+
 </select>
 
 <button onclick="mudarFormacao()">
@@ -343,7 +654,7 @@ Carregar Escalação
 Resetar Campo
 </button>
 
-<h2>Adicionar Jogador</h2>
+<h2>➕ Adicionar Jogador</h2>
 
 <input type="text" id="nome" placeholder="Nome">
 
@@ -355,7 +666,7 @@ Resetar Campo
 Adicionar
 </button>
 
-<h2>Banco de Reservas</h2>
+<h2>🪑 Banco de Reservas</h2>
 
 <div class="lista" id="listaJogadores"></div>
 
@@ -377,63 +688,76 @@ Adicionar
 
 </div>
 
+<!-- SOM -->
+
 <audio id="torcida" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4d4db9c2db.mp3?filename=stadium-crowd-ambience-110673.mp3" type="audio/mpeg">
+
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4d4db9c2db.mp3?filename=stadium-crowd-ambience-110673.mp3">
+
 </audio>
 
 <script>
 
+/* ========================================= */
 /* JOGADORES */
+/* ========================================= */
 
 const jogadores = [
 
-["Alisson",1,"GOL"],
-["Ederson",23,"GOL"],
-["Weverton",12,"GOL"],
+["Alisson",1,"GOL",89],
+["Ederson",23,"GOL",88],
+["Weverton",12,"GOL",83],
 
-["Alex Sandro",6,"LE"],
-["Danilo",2,"LD"],
-["Douglas Santos",16,"LE"],
-["Wesley",13,"LD"],
+["Alex Sandro",6,"LE",82],
+["Danilo",2,"LD",83],
+["Douglas Santos",16,"LE",81],
+["Wesley",13,"LD",79],
 
-["Bremer",3,"ZAG"],
-["Gabriel Magalhães",4,"ZAG"],
-["Ibañez",14,"ZAG"],
-["Léo Pereira",15,"ZAG"],
-["Marquinhos",5,"ZAG"],
+["Bremer",3,"ZAG",86],
+["Gabriel Magalhães",4,"ZAG",85],
+["Ibañez",14,"ZAG",82],
+["Léo Pereira",15,"ZAG",81],
+["Marquinhos",5,"ZAG",87],
 
-["Bruno Guimarães",17,"MEI"],
-["Casemiro",8,"VOL"],
-["Danilo Santos",18,"VOL"],
-["Fabinho",19,"VOL"],
-["Lucas Paquetá",10,"MEI"],
+["Bruno Guimarães",17,"MEI",86],
+["Casemiro",8,"VOL",84],
+["Danilo Santos",18,"VOL",79],
+["Fabinho",19,"VOL",82],
+["Lucas Paquetá",10,"MEI",85],
 
-["Endrick",9,"ATA"],
-["Gabriel Martinelli",11,"PE"],
-["Igor Thiago",21,"ATA"],
-["Luiz Henrique",22,"PD"],
-["Matheus Cunha",20,"ATA"],
-["Neymar",10,"CAM"],
-["Raphinha",7,"PD"],
-["Rayan",24,"ATA"],
-["Vinicius Jr.",7,"PE"]
+["Endrick",9,"ATA",82],
+["Gabriel Martinelli",11,"PE",85],
+["Igor Thiago",21,"ATA",80],
+["Luiz Henrique",22,"PD",81],
+["Matheus Cunha",20,"ATA",83],
+["Neymar",10,"CAM",90],
+["Raphinha",7,"PD",87],
+["Rayan",24,"ATA",76],
+["Vinicius Jr.",7,"PE",91]
 
 ];
 
-const lista = document.getElementById("listaJogadores");
-const campo = document.getElementById("campo");
+const lista =
+document.getElementById("listaJogadores");
 
-/* MOSTRAR BANCO */
+const campo =
+document.getElementById("campo");
+
+/* ========================================= */
+/* BANCO */
+/* ========================================= */
 
 jogadores.forEach(j => {
 
-const div = document.createElement("div");
+const div =
+document.createElement("div");
 
 div.className = "item";
 
-div.innerHTML = `${j[0]} (${j[2]})`;
+div.innerHTML =
+`${j[0]} (${j[2]}) - OVR ${j[3]}`;
 
-div.onclick = () => {
+div.onclick = ()=>{
 
 document.getElementById("nome").value = j[0];
 document.getElementById("numero").value = j[1];
@@ -445,11 +769,21 @@ lista.appendChild(div);
 
 });
 
+/* ========================================= */
 /* CRIAR */
+/* ========================================= */
 
-function criarJogador(nome,numero,pos,top,left){
+function criarJogador(
+nome,
+numero,
+pos,
+overall,
+top,
+left
+){
 
-const jogador = document.createElement("div");
+const jogador =
+document.createElement("div");
 
 jogador.className = "jogador";
 
@@ -457,107 +791,182 @@ jogador.style.top = top;
 jogador.style.left = left;
 
 jogador.innerHTML = `
-<button class="remover">X</button>
-<div class="numero">${numero}</div>
-<div class="nome">${nome}</div>
-<div class="pos">${pos}</div>
+
+<button class="remover">
+X
+</button>
+
+<div class="overall">
+${overall}
+</div>
+
+<div class="numero">
+${numero}
+</div>
+
+<div class="nome">
+${nome}
+</div>
+
+<div class="pos">
+${pos}
+</div>
+
 `;
 
 campo.appendChild(jogador);
 
 /* REMOVER */
 
-jogador.querySelector(".remover").onclick = () => {
+jogador.querySelector(".remover")
+.onclick = ()=>{
+
 jogador.remove();
+
 };
 
 /* DRAG */
 
 let segurando = false;
+
 let offsetX, offsetY;
 
-jogador.addEventListener("mousedown", e => {
+jogador.addEventListener(
+"mousedown",
+e=>{
 
 segurando = true;
 
-offsetX = e.clientX - jogador.offsetLeft;
-offsetY = e.clientY - jogador.offsetTop;
+offsetX =
+e.clientX - jogador.offsetLeft;
+
+offsetY =
+e.clientY - jogador.offsetTop;
 
 });
 
-document.addEventListener("mousemove", e => {
+document.addEventListener(
+"mousemove",
+e=>{
 
 if(!segurando) return;
 
-let x = e.clientX - offsetX;
-let y = e.clientY - offsetY;
+let x =
+e.clientX - offsetX;
 
-/* LIMITES */
+let y =
+e.clientY - offsetY;
 
-const maxX = campo.clientWidth - jogador.clientWidth;
-const maxY = campo.clientHeight - jogador.clientHeight;
+const maxX =
+campo.clientWidth -
+jogador.clientWidth;
+
+const maxY =
+campo.clientHeight -
+jogador.clientHeight;
 
 if(x < 0) x = 0;
 if(y < 0) y = 0;
+
 if(x > maxX) x = maxX;
 if(y > maxY) y = maxY;
 
-jogador.style.left = x + "px";
-jogador.style.top = y + "px";
+jogador.style.left =
+x + "px";
+
+jogador.style.top =
+y + "px";
 
 });
 
-document.addEventListener("mouseup", ()=>{
+document.addEventListener(
+"mouseup",
+()=>{
 
 segurando = false;
 
 });
 
-/* TOUCH MOBILE */
+/* TOUCH */
 
-jogador.addEventListener("touchmove", e => {
+jogador.addEventListener(
+"touchmove",
+e=>{
 
-const touch = e.touches[0];
+const touch =
+e.touches[0];
 
-jogador.style.left = touch.clientX - 50 + "px";
-jogador.style.top = touch.clientY - 50 + "px";
+jogador.style.left =
+touch.clientX - 50 + "px";
+
+jogador.style.top =
+touch.clientY - 50 + "px";
 
 });
 
 }
 
+/* ========================================= */
 /* ADICIONAR */
+/* ========================================= */
 
 function adicionarJogador(){
 
-const nome = document.getElementById("nome").value;
-const numero = document.getElementById("numero").value;
-const pos = document.getElementById("posicao").value;
+const nome =
+document.getElementById("nome").value;
+
+const numero =
+document.getElementById("numero").value;
+
+const pos =
+document.getElementById("posicao").value;
 
 if(!nome || !numero || !pos){
-alert("Preencha tudo");
+
+alert("Preencha tudo!");
+
 return;
-}
-
-criarJogador(nome,numero,pos,"40%","40%");
 
 }
 
+criarJogador(
+nome,
+numero,
+pos,
+80,
+"40%",
+"40%"
+);
+
+}
+
+/* ========================================= */
 /* RESET */
+/* ========================================= */
 
 function resetarCampo(){
 
-document.querySelectorAll(".jogador").forEach(j=>j.remove());
+document
+.querySelectorAll(".jogador")
+.forEach(j=>{
+
+j.remove();
+
+});
 
 }
 
+/* ========================================= */
 /* SALVAR */
+/* ========================================= */
 
 function salvarEscalacao(){
 
 const dados = [];
 
-document.querySelectorAll(".jogador").forEach(j=>{
+document
+.querySelectorAll(".jogador")
+.forEach(j=>{
 
 dados.push({
 
@@ -569,25 +978,36 @@ left:j.style.left
 
 });
 
-localStorage.setItem("escalacaoBrasil",JSON.stringify(dados));
+localStorage.setItem(
+"escalacaoBrasil",
+JSON.stringify(dados)
+);
 
 alert("Escalação salva!");
 
 }
 
+/* ========================================= */
 /* CARREGAR */
+/* ========================================= */
 
 function carregarEscalacao(){
 
 resetarCampo();
 
-const dados = JSON.parse(localStorage.getItem("escalacaoBrasil"));
+const dados =
+JSON.parse(
+localStorage.getItem(
+"escalacaoBrasil"
+)
+);
 
 if(!dados) return;
 
 dados.forEach(d=>{
 
-const div = document.createElement("div");
+const div =
+document.createElement("div");
 
 div.className = "jogador";
 
@@ -598,7 +1018,8 @@ div.style.left = d.left;
 
 campo.appendChild(div);
 
-div.querySelector(".remover").onclick = ()=>{
+div.querySelector(".remover")
+.onclick = ()=>{
 
 div.remove();
 
@@ -608,29 +1029,74 @@ div.remove();
 
 }
 
+/* ========================================= */
 /* FORMAÇÃO */
+/* ========================================= */
 
 function mudarFormacao(){
 
 resetarCampo();
 
-criarJogador("Alisson",1,"GOL","82%","45%");
-criarJogador("Danilo",2,"LD","65%","15%");
-criarJogador("Bremer",3,"ZAG","68%","35%");
-criarJogador("Marquinhos",5,"ZAG","68%","55%");
-criarJogador("Alex Sandro",6,"LE","65%","75%");
+criarJogador(
+"Alisson",1,"GOL",89,
+"82%","45%"
+);
 
-criarJogador("Casemiro",8,"VOL","45%","30%");
-criarJogador("Bruno G.",17,"MEI","42%","50%");
-criarJogador("Lucas Paquetá",10,"MEI","45%","70%");
+criarJogador(
+"Danilo",2,"LD",83,
+"65%","15%"
+);
 
-criarJogador("Vinicius Jr.",7,"PE","18%","20%");
-criarJogador("Endrick",9,"ATA","10%","45%");
-criarJogador("Raphinha",11,"PD","18%","70%");
+criarJogador(
+"Bremer",3,"ZAG",86,
+"68%","35%"
+);
+
+criarJogador(
+"Marquinhos",5,"ZAG",87,
+"68%","55%"
+);
+
+criarJogador(
+"Alex Sandro",6,"LE",82,
+"65%","75%"
+);
+
+criarJogador(
+"Casemiro",8,"VOL",84,
+"45%","30%"
+);
+
+criarJogador(
+"Bruno G.",17,"MEI",86,
+"42%","50%"
+);
+
+criarJogador(
+"Lucas Paquetá",10,"MEI",85,
+"45%","70%"
+);
+
+criarJogador(
+"Vinicius Jr.",7,"PE",91,
+"18%","20%"
+);
+
+criarJogador(
+"Endrick",9,"ATA",82,
+"10%","45%"
+);
+
+criarJogador(
+"Raphinha",11,"PD",87,
+"18%","70%"
+);
 
 }
 
+/* ========================================= */
 /* CRONÔMETRO */
+/* ========================================= */
 
 let segundos = 0;
 
@@ -638,22 +1104,54 @@ setInterval(()=>{
 
 segundos++;
 
-let min = String(Math.floor(segundos/60)).padStart(2,"0");
-let seg = String(segundos%60).padStart(2,"0");
+let min =
+String(
+Math.floor(segundos/60)
+).padStart(2,"0");
 
-document.getElementById("cronometro").innerHTML = `${min}:${seg}`;
+let seg =
+String(segundos%60)
+.padStart(2,"0");
+
+document.getElementById(
+"cronometro"
+).innerHTML =
+`${min}:${seg}`;
 
 },1000);
 
+/* ========================================= */
 /* SOM */
+/* ========================================= */
 
-document.body.addEventListener("click",()=>{
+document.body
+.addEventListener(
+"click",
+()=>{
 
-document.getElementById("torcida").play();
+document
+.getElementById("torcida")
+.play();
 
-},{once:true});
+},
+{once:true}
+);
 
-/* INICIAR */
+/* ========================================= */
+/* INTRO */
+/* ========================================= */
+
+setTimeout(()=>{
+
+document.getElementById(
+"intro"
+).style.display = "none";
+
+},5000);
+
+/* ========================================= */
+/* START */
+/* ========================================= */
 
 mudarFormacao();
 
