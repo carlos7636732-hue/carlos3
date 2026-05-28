@@ -4,15 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>🏆 COPA DO MUNDO 2026 ULTRA FIFA</title>
-
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<title>🇧🇷 Seleção Brasileira ULTRA FIFA</title>
 
 <style>
-
-/* ========================================= */
-/* RESET */
-/* ========================================= */
 
 *{
 margin:0;
@@ -22,83 +16,73 @@ font-family:Arial,sans-serif;
 }
 
 body{
-overflow:hidden;
-color:white;
-
 background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
 url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1600');
-
 background-size:cover;
 background-position:center;
+color:white;
+overflow:hidden;
 }
 
-/* ========================================= */
 /* TOPO */
-/* ========================================= */
 
 .topo{
 height:90px;
+background:rgba(0,0,0,.5);
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px;
-
-background:rgba(0,0,0,.5);
 backdrop-filter:blur(10px);
-
-border-bottom:2px solid #ffdf00;
 }
 
 .titulo{
 font-size:32px;
 font-weight:bold;
 color:#ffdf00;
-
-text-shadow:
-0 0 10px #ffdf00,
-0 0 20px #ffdf00;
+text-shadow:0 0 20px #ffdf00;
 }
 
+/* PLACAR */
+
 .placar{
-font-size:30px;
+font-size:28px;
 font-weight:bold;
 }
 
+/* CRONOMETRO */
+
 .cronometro{
-font-size:28px;
+font-size:26px;
 color:#ffdf00;
+text-shadow:0 0 10px #ffdf00;
 }
 
-/* ========================================= */
-/* LAYOUT */
-/* ========================================= */
+/* CONTAINER */
 
 .container{
 display:flex;
 height:calc(100vh - 90px);
 }
 
-/* ========================================= */
 /* MENU */
-/* ========================================= */
 
 .menu{
-width:350px;
-padding:20px;
-overflow:auto;
-
+width:360px;
 background:rgba(0,0,0,.45);
 backdrop-filter:blur(10px);
-
-border-right:2px solid rgba(255,255,255,.2);
+padding:20px;
+overflow-y:auto;
 }
 
 .menu h2{
-margin:15px 0 10px;
+margin-bottom:10px;
+margin-top:15px;
 color:#ffdf00;
 }
 
+input,
 button,
 select{
 width:100%;
@@ -118,15 +102,31 @@ transition:.2s;
 
 button:hover{
 transform:scale(1.03);
-
-box-shadow:
-0 0 10px #ffdf00,
-0 0 20px #ffdf00;
+box-shadow:0 0 15px #ffdf00;
 }
 
-/* ========================================= */
+/* LISTA */
+
+.lista{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.item{
+padding:10px;
+border-radius:10px;
+background:rgba(255,255,255,.08);
+cursor:pointer;
+transition:.2s;
+}
+
+.item:hover{
+background:rgba(255,255,255,.2);
+transform:translateX(5px);
+}
+
 /* CAMPO */
-/* ========================================= */
 
 .campo{
 flex:1;
@@ -134,7 +134,6 @@ margin:20px;
 border-radius:20px;
 position:relative;
 overflow:hidden;
-
 border:4px solid white;
 
 background:
@@ -164,7 +163,6 @@ width:180px;
 height:180px;
 border:4px solid white;
 border-radius:50%;
-
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
@@ -178,7 +176,6 @@ width:180px;
 height:70px;
 left:50%;
 transform:translateX(-50%);
-
 border:5px solid white;
 z-index:2;
 }
@@ -193,98 +190,68 @@ bottom:-5px;
 border-top:none;
 }
 
-/* ========================================= */
-/* JOGADOR */
-/* ========================================= */
+/* JOGADORES */
 
 .jogador{
 position:absolute;
-
 width:120px;
-height:175px;
-
-background:
-linear-gradient(#ffdf00,#d4b200);
-
-border-radius:20px;
-
+height:170px;
+background:linear-gradient(#ffdf00,#d4b200);
+color:black;
+border-radius:18px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-
 font-weight:bold;
-color:black;
-
 cursor:grab;
 user-select:none;
 
-transition:.2s;
-
 box-shadow:
 0 0 10px #ffdf00,
-0 0 25px rgba(255,223,0,.8);
+0 0 25px rgba(255,223,0,.7);
 
-animation:entrada .5s ease;
+transition:.2s;
 }
 
 .jogador:hover{
 transform:scale(1.08);
 }
 
-@keyframes entrada{
-
-from{
-opacity:0;
-transform:scale(.2);
-}
-
-to{
-opacity:1;
-transform:scale(1);
-}
-
-}
-
 /* OVER */
 
 .overall{
 position:absolute;
-top:5px;
-left:5px;
-
+top:8px;
+left:8px;
 background:black;
 color:#ffdf00;
-
 padding:5px 8px;
 border-radius:10px;
-
 font-size:18px;
+font-weight:bold;
+box-shadow:0 0 10px #ffdf00;
 }
-
-/* NUMERO */
 
 .numero{
 font-size:30px;
 }
 
-/* NOME */
-
 .nome{
-font-size:13px;
+font-size:14px;
+margin-top:5px;
 text-align:center;
-padding:0 5px;
 }
-
-/* POSIÇÃO */
 
 .posicao{
-font-size:11px;
+font-size:12px;
+margin-bottom:5px;
 }
 
-/* STATS */
+/* STATS FIFA */
 
 .stats{
+margin-top:5px;
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
@@ -295,208 +262,27 @@ padding:5px;
 .stats span{
 background:rgba(0,0,0,.2);
 padding:3px 5px;
-border-radius:5px;
+border-radius:6px;
 font-size:10px;
-}
-
-/* ========================================= */
-/* BOLA */
-/* ========================================= */
-
-#bola{
-position:absolute;
-left:48%;
-top:48%;
-font-size:45px;
-z-index:999;
-cursor:grab;
-}
-
-/* ========================================= */
-/* GOL TEXTO */
-/* ========================================= */
-
-#golTexto{
-position:absolute;
-
-top:40%;
-left:50%;
-
-transform:translateX(-50%);
-
-font-size:80px;
-font-weight:bold;
-
-color:#ffdf00;
-
-display:none;
-
-text-shadow:
-0 0 20px #ffdf00,
-0 0 40px white;
-
-animation:piscar 1s infinite;
-}
-
-@keyframes piscar{
-
-0%{
-transform:translateX(-50%) scale(1);
-}
-
-50%{
-transform:translateX(-50%) scale(1.2);
-}
-
-100%{
-transform:translateX(-50%) scale(1);
-}
-
-}
-
-/* ========================================= */
-/* TABELA */
-/* ========================================= */
-
-.painelTabela{
-position:absolute;
-top:100px;
-right:20px;
-
-width:650px;
-height:82vh;
-
-overflow:auto;
-
-background:rgba(0,0,0,.75);
-
-padding:20px;
-
-border-radius:20px;
-
-border:2px solid #ffdf00;
-
-box-shadow:
-0 0 20px #ffdf00;
-}
-
-.grupo{
-margin-bottom:20px;
-
-background:rgba(255,255,255,.05);
-
-padding:15px;
-border-radius:15px;
-}
-
-.grupo h2{
-margin-bottom:10px;
-color:#ffdf00;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-font-size:12px;
-}
-
-th{
-background:#ffdf00;
-color:black;
-padding:8px;
-}
-
-td{
-padding:8px;
-text-align:center;
-border-bottom:1px solid rgba(255,255,255,.1);
-}
-
-tr:hover{
-background:rgba(255,255,255,.1);
-}
-
-.brasil{
-background:rgba(0,255,100,.15);
-}
-
-/* ========================================= */
-/* PARTIDA */
-/* ========================================= */
-
-#telaPartida{
-position:fixed;
-top:0;
-left:0;
-
-width:100%;
-height:100%;
-
-display:none;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-z-index:99999;
-
-background:
-linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1600');
-
-background-size:cover;
-background-position:center;
-}
-
-.hudPartida{
-width:90%;
-
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-padding:20px;
-
-font-size:40px;
 font-weight:bold;
 }
 
-#campoPartida{
-width:90%;
-height:70%;
+/* REMOVER */
 
-position:relative;
-
-border:5px solid white;
-border-radius:20px;
-
-overflow:hidden;
-
-background:
-repeating-linear-gradient(
-90deg,
-#0f7a2d 0px,
-#0f7a2d 80px,
-#0d6d28 80px,
-#0d6d28 160px
-);
-}
-
-#bolaPartida{
+.remover{
 position:absolute;
-left:48%;
-top:48%;
-font-size:50px;
+top:-8px;
+right:-8px;
+width:25px;
+height:25px;
+border:none;
+border-radius:50%;
+background:red;
+color:white;
+cursor:pointer;
 }
 
-.controles{
-margin-top:20px;
-display:flex;
-gap:20px;
-}
-
-/* ========================================= */
 /* MOBILE */
-/* ========================================= */
 
 @media(max-width:900px){
 
@@ -509,13 +295,8 @@ width:100%;
 height:320px;
 }
 
-.painelTabela{
-position:relative;
-width:95%;
-height:auto;
-margin:10px auto;
-top:0;
-right:0;
+.campo{
+margin:10px;
 }
 
 }
@@ -525,17 +306,15 @@ right:0;
 
 <body>
 
-<!-- ========================================= -->
 <!-- TOPO -->
-<!-- ========================================= -->
 
 <div class="topo">
 
 <div class="titulo">
-🏆 COPA DO MUNDO 2026 ULTRA
+🇧🇷 SELEÇÃO BRASILEIRA ULTRA FIFA
 </div>
 
-<div class="placar" id="placar">
+<div class="placar">
 BRA 0 x 0 ARG
 </div>
 
@@ -545,79 +324,53 @@ BRA 0 x 0 ARG
 
 </div>
 
-<!-- ========================================= -->
-<!-- CONTAINER -->
-<!-- ========================================= -->
-
 <div class="container">
 
 <!-- MENU -->
 
 <div class="menu">
 
-<h2>⚽ Formação</h2>
+<h2>Formação</h2>
 
 <select id="formacao">
-
-<option value="433">
-4-3-3
-</option>
-
-<option value="442">
-4-4-2
-</option>
-
-<option value="352">
-3-5-2
-</option>
-
+<option value="433">4-3-3</option>
+<option value="442">4-4-2</option>
+<option value="352">3-5-2</option>
 </select>
 
 <button onclick="mudarFormacao()">
-✅ Aplicar Formação
+Aplicar Formação
 </button>
 
 <button onclick="salvarEscalacao()">
-💾 Salvar Escalação
+Salvar Escalação
 </button>
 
 <button onclick="carregarEscalacao()">
-📂 Carregar Escalação
+Carregar Escalação
 </button>
 
 <button onclick="resetarCampo()">
-🗑 Resetar Campo
+Resetar Campo
 </button>
 
-<button onclick="exportar()">
-📸 Exportar Imagem
+<h2>Adicionar Jogador</h2>
+
+<input type="text" id="nome" placeholder="Nome">
+
+<input type="number" id="numero" placeholder="Número">
+
+<input type="text" id="posicao" placeholder="Posição">
+
+<input type="number" id="overall" placeholder="Overall">
+
+<button onclick="adicionarJogador()">
+Adicionar Jogador
 </button>
 
-<button onclick="simularPartida()">
-🎮 Simular Partida
-</button>
+<h2>Banco de Reservas</h2>
 
-<button onclick="irParaPartida()">
-🏆 Jogar Partida
-</button>
-
-<h2>🏆 Simular Jogos</h2>
-
-<button onclick="resultado('Brasil','Marrocos',3,1)">
-🇧🇷 Brasil 3x1 Marrocos
-</button>
-
-<button onclick="resultado('Haiti','Escócia',0,0)">
-🇭🇹 Haiti 0x0 Escócia
-</button>
-
-<button onclick="resultado('Brasil','Haiti',5,0)">
-🇧🇷 Brasil 5x0 Haiti
-</button>
-
-<button onclick="resultado('Escócia','Marrocos',2,1)">
-🏴 Escócia 2x1 Marrocos
-</button>
+<div class="lista" id="listaJogadores"></div>
 
 </div>
 
@@ -633,133 +386,86 @@ BRA 0 x 0 ARG
 
 <div class="gol gol-baixo"></div>
 
-<div id="bola">⚽</div>
-
-<div id="golTexto">
-GOOOOOOL ⚽
 </div>
 
 </div>
 
-</div>
-
-<!-- ========================================= -->
-<!-- TABELA -->
-<!-- ========================================= -->
-
-<div class="painelTabela">
-
-<div class="grupo">
-
-<h2>🇧🇷 Grupo C</h2>
-
-<table>
-
-<tr>
-<th>#</th>
-<th>Equipe</th>
-<th>PTS</th>
-<th>PJ</th>
-<th>VIT</th>
-<th>E</th>
-<th>DER</th>
-<th>GM</th>
-<th>GC</th>
-<th>SG</th>
-</tr>
-
-<tr class="brasil" id="linhaBrasil"></tr>
-<tr id="linhaMarrocos"></tr>
-<tr id="linhaHaiti"></tr>
-<tr id="linhaEscocia"></tr>
-
-</table>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- PARTIDA -->
-<!-- ========================================= -->
-
-<div id="telaPartida">
-
-<div class="hudPartida">
-
-<div>
-🇧🇷 BRASIL
-</div>
-
-<div id="placarPartida">
-0 x 0
-</div>
-
-<div>
-🇦🇷 ARGENTINA
-</div>
-
-</div>
-
-<div id="campoPartida">
-
-<div class="linha"></div>
-
-<div class="circulo"></div>
-
-<div class="gol gol-topo"></div>
-
-<div class="gol gol-baixo"></div>
-
-<div id="bolaPartida">
-⚽
-</div>
-
-</div>
-
-<div class="controles">
-
-<button onclick="chutarBrasil()">
-⚽ Chutar Brasil
-</button>
-
-<button onclick="chutarArgentina()">
-⚽ Chutar Argentina
-</button>
-
-<button onclick="finalizarPartida()">
-🏁 Finalizar
-</button>
-
-</div>
-
-</div>
-
-<!-- ========================================= -->
 <!-- SOM -->
-<!-- ========================================= -->
 
 <audio id="torcida" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4d4db9c2db.mp3?filename=stadium-crowd-ambience-110673.mp3">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4d4db9c2db.mp3?filename=stadium-crowd-ambience-110673.mp3" type="audio/mpeg">
 </audio>
-
-<!-- ========================================= -->
-<!-- JAVASCRIPT -->
-<!-- ========================================= -->
 
 <script>
 
-const campo =
-document.getElementById("campo");
+/* JOGADORES */
 
-/* ========================================= */
+const jogadores = [
+
+["Alisson",1,"GOL",89],
+["Ederson",23,"GOL",88],
+["Weverton",12,"GOL",82],
+
+["Alex Sandro",6,"LE",81],
+["Danilo",2,"LD",82],
+["Douglas Santos",16,"LE",79],
+["Wesley",13,"LD",78],
+
+["Bremer",3,"ZAG",86],
+["Gabriel Magalhães",4,"ZAG",85],
+["Ibañez",14,"ZAG",82],
+["Léo Pereira",15,"ZAG",80],
+["Marquinhos",5,"ZAG",87],
+
+["Bruno Guimarães",17,"MEI",86],
+["Casemiro",8,"VOL",84],
+["Danilo Santos",18,"VOL",78],
+["Fabinho",19,"VOL",83],
+["Lucas Paquetá",10,"MEI",85],
+
+["Endrick",9,"ATA",82],
+["Gabriel Martinelli",11,"PE",85],
+["Igor Thiago",21,"ATA",79],
+["Luiz Henrique",22,"PD",81],
+["Matheus Cunha",20,"ATA",84],
+["Neymar",10,"CAM",90],
+["Raphinha",7,"PD",87],
+["Rayan",24,"ATA",76],
+["Vinicius Jr.",7,"PE",91]
+
+];
+
+const lista = document.getElementById("listaJogadores");
+const campo = document.getElementById("campo");
+
+/* LISTA */
+
+jogadores.forEach(j => {
+
+const div = document.createElement("div");
+
+div.className = "item";
+
+div.innerHTML = `${j[0]} (${j[2]}) - OVR ${j[3]}`;
+
+div.onclick = () => {
+
+document.getElementById("nome").value = j[0];
+document.getElementById("numero").value = j[1];
+document.getElementById("posicao").value = j[2];
+document.getElementById("overall").value = j[3];
+
+};
+
+lista.appendChild(div);
+
+});
+
 /* CRIAR JOGADOR */
-/* ========================================= */
 
 function criarJogador(nome,numero,pos,overall,top,left){
 
-const jogador =
-document.createElement("div");
+const jogador = document.createElement("div");
 
 jogador.className = "jogador";
 
@@ -767,37 +473,35 @@ jogador.style.top = top;
 jogador.style.left = left;
 
 jogador.innerHTML = `
+<button class="remover">X</button>
 
-<div class="overall">
-${overall}
-</div>
+<div class="overall">${overall}</div>
 
-<div class="numero">
-${numero}
-</div>
+<div class="numero">${numero}</div>
 
-<div class="nome">
-${nome}
-</div>
+<div class="nome">${nome}</div>
 
-<div class="posicao">
-${pos}
-</div>
+<div class="posicao">${pos}</div>
 
 <div class="stats">
-
-<span>⚡95</span>
-<span>🎯88</span>
-<span>🧠90</span>
-<span>🪄94</span>
-<span>🛡40</span>
-<span>💪82</span>
-
+<span>⚡ 95</span>
+<span>🎯 88</span>
+<span>🧠 90</span>
+<span>🪄 94</span>
+<span>🛡 40</span>
+<span>💪 82</span>
 </div>
-
 `;
 
 campo.appendChild(jogador);
+
+/* REMOVER */
+
+jogador.querySelector(".remover").onclick = ()=>{
+
+jogador.remove();
+
+};
 
 /* DRAG */
 
@@ -805,39 +509,27 @@ let segurando = false;
 
 let offsetX, offsetY;
 
-jogador.addEventListener("mousedown",e=>{
+jogador.addEventListener("mousedown", e => {
 
 segurando = true;
 
-offsetX =
-e.clientX - jogador.offsetLeft;
-
-offsetY =
-e.clientY - jogador.offsetTop;
+offsetX = e.clientX - jogador.offsetLeft;
+offsetY = e.clientY - jogador.offsetTop;
 
 });
 
-document.addEventListener("mousemove",e=>{
+document.addEventListener("mousemove", e => {
 
 if(!segurando) return;
 
-let x =
-e.clientX - offsetX;
+let x = e.clientX - offsetX;
+let y = e.clientY - offsetY;
 
-let y =
-e.clientY - offsetY;
-
-const maxX =
-campo.clientWidth -
-jogador.clientWidth;
-
-const maxY =
-campo.clientHeight -
-jogador.clientHeight;
+const maxX = campo.clientWidth - jogador.clientWidth;
+const maxY = campo.clientHeight - jogador.clientHeight;
 
 if(x < 0) x = 0;
 if(y < 0) y = 0;
-
 if(x > maxX) x = maxX;
 if(y > maxY) y = maxY;
 
@@ -846,155 +538,139 @@ jogador.style.top = y + "px";
 
 });
 
-document.addEventListener("mouseup",()=>{
+document.addEventListener("mouseup", ()=>{
 
 segurando = false;
 
 });
 
+/* MOBILE */
+
+jogador.addEventListener("touchmove", e => {
+
+const touch = e.touches[0];
+
+jogador.style.left = touch.clientX - 60 + "px";
+jogador.style.top = touch.clientY - 75 + "px";
+
+});
+
 }
 
-/* ========================================= */
+/* ADICIONAR */
+
+function adicionarJogador(){
+
+const nome = document.getElementById("nome").value;
+const numero = document.getElementById("numero").value;
+const pos = document.getElementById("posicao").value;
+const overall = document.getElementById("overall").value;
+
+if(!nome || !numero || !pos || !overall){
+
+alert("Preencha tudo!");
+
+return;
+
+}
+
+criarJogador(nome,numero,pos,overall,"40%","40%");
+
+}
+
 /* RESET */
-/* ========================================= */
 
 function resetarCampo(){
 
-document
-.querySelectorAll(".jogador")
-.forEach(j=>j.remove());
+document.querySelectorAll(".jogador").forEach(j=>{
+
+j.remove();
+
+});
 
 }
 
-/* ========================================= */
-/* FORMAÇÃO */
-/* ========================================= */
-
-function mudarFormacao(){
-
-resetarCampo();
-
-const formacao =
-document.getElementById("formacao")
-.value;
-
-/* 4-3-3 */
-
-if(formacao === "433"){
-
-criarJogador("Alisson",1,"GOL",89,"82%","45%");
-criarJogador("Danilo",2,"LD",82,"65%","15%");
-criarJogador("Bremer",3,"ZAG",86,"68%","35%");
-criarJogador("Marquinhos",5,"ZAG",87,"68%","55%");
-criarJogador("Alex Sandro",6,"LE",81,"65%","75%");
-
-criarJogador("Casemiro",8,"VOL",84,"45%","30%");
-criarJogador("Bruno G.",17,"MEI",86,"42%","50%");
-criarJogador("Paquetá",10,"MEI",85,"45%","70%");
-
-criarJogador("Vini Jr",7,"PE",91,"18%","20%");
-criarJogador("Endrick",9,"ATA",82,"10%","45%");
-criarJogador("Raphinha",11,"PD",87,"18%","70%");
-
-}
-
-/* 4-4-2 */
-
-if(formacao === "442"){
-
-criarJogador("Alisson",1,"GOL",89,"82%","45%");
-
-criarJogador("Danilo",2,"LD",82,"65%","15%");
-criarJogador("Bremer",3,"ZAG",86,"68%","35%");
-criarJogador("Marquinhos",5,"ZAG",87,"68%","55%");
-criarJogador("Alex Sandro",6,"LE",81,"65%","75%");
-
-criarJogador("Casemiro",8,"VOL",84,"45%","20%");
-criarJogador("Bruno G.",17,"MEI",86,"42%","40%");
-criarJogador("Paquetá",10,"MEI",85,"42%","60%");
-criarJogador("Raphinha",11,"PD",87,"45%","80%");
-
-criarJogador("Vini Jr",7,"ATA",91,"15%","35%");
-criarJogador("Endrick",9,"ATA",82,"15%","55%");
-
-}
-
-/* 3-5-2 */
-
-if(formacao === "352"){
-
-criarJogador("Alisson",1,"GOL",89,"82%","45%");
-
-criarJogador("Bremer",3,"ZAG",86,"68%","25%");
-criarJogador("Marquinhos",5,"ZAG",87,"68%","45%");
-criarJogador("Gabriel",4,"ZAG",85,"68%","65%");
-
-criarJogador("Danilo",2,"ALA",82,"50%","10%");
-criarJogador("Casemiro",8,"VOL",84,"45%","30%");
-criarJogador("Bruno G.",17,"MEI",86,"42%","50%");
-criarJogador("Paquetá",10,"MEI",85,"45%","70%");
-criarJogador("Vini Jr",7,"ALA",91,"50%","85%");
-
-criarJogador("Endrick",9,"ATA",82,"15%","35%");
-criarJogador("Raphinha",11,"ATA",87,"15%","55%");
-
-}
-
-}
-
-/* ========================================= */
 /* SALVAR */
-/* ========================================= */
 
 function salvarEscalacao(){
 
+const dados = [];
+
+document.querySelectorAll(".jogador").forEach(j=>{
+
+dados.push({
+
+html:j.innerHTML,
+top:j.style.top,
+left:j.style.left
+
+});
+
+});
+
 localStorage.setItem(
-"campoBrasil",
-campo.innerHTML
+"escalacaoBrasil",
+JSON.stringify(dados)
 );
 
 alert("Escalação salva!");
 
 }
 
-/* ========================================= */
 /* CARREGAR */
-/* ========================================= */
 
 function carregarEscalacao(){
 
-campo.innerHTML =
-localStorage.getItem("campoBrasil");
+resetarCampo();
 
-}
+const dados =
+JSON.parse(
+localStorage.getItem("escalacaoBrasil")
+);
 
-/* ========================================= */
-/* EXPORTAR */
-/* ========================================= */
+if(!dados) return;
 
-function exportar(){
+dados.forEach(d=>{
 
-html2canvas(document.body)
-.then(canvas=>{
+const div = document.createElement("div");
 
-const a =
-document.createElement("a");
+div.className = "jogador";
 
-a.download =
-"copa2026.png";
+div.innerHTML = d.html;
 
-a.href =
-canvas.toDataURL();
+div.style.top = d.top;
+div.style.left = d.left;
 
-a.click();
+campo.appendChild(div);
 
 });
 
 }
 
-/* ========================================= */
-/* CRONÔMETRO */
-/* ========================================= */
+/* FORMAÇÃO */
+
+function mudarFormacao(){
+
+resetarCampo();
+
+criarJogador("Alisson",1,"GOL",89,"82%","45%");
+
+criarJogador("Danilo",2,"LD",82,"65%","15%");
+criarJogador("Bremer",3,"ZAG",86,"68%","35%");
+criarJogador("Marquinhos",5,"ZAG",87,"68%","55%");
+criarJogador("Alex Sandro",6,"LE",81,"65%","75%");
+
+criarJogador("Casemiro",8,"VOL",84,"45%","30%");
+criarJogador("Bruno G.",17,"MEI",86,"42%","50%");
+criarJogador("Lucas Paquetá",10,"MEI",85,"45%","70%");
+
+criarJogador("Vinicius Jr.",7,"PE",91,"18%","20%");
+criarJogador("Endrick",9,"ATA",82,"10%","45%");
+criarJogador("Raphinha",11,"PD",87,"18%","70%");
+
+}
+
+/* CRONOMETRO */
 
 let segundos = 0;
 
@@ -1010,415 +686,22 @@ let seg =
 String(segundos%60)
 .padStart(2,"0");
 
-document.getElementById(
-"cronometro"
-).innerHTML =
-`${min}:${seg}`;
+document.getElementById("cronometro")
+.innerHTML = `${min}:${seg}`;
 
 },1000);
 
-/* ========================================= */
-/* BOLA */
-/* ========================================= */
+/* SOM */
 
-const bola =
-document.getElementById("bola");
+document.body.addEventListener("click",()=>{
 
-let segurandoBola = false;
+document.getElementById("torcida").play();
 
-bola.addEventListener("mousedown",()=>{
+},{once:true});
 
-segurandoBola = true;
-
-});
-
-document.addEventListener("mouseup",()=>{
-
-segurandoBola = false;
-
-});
-
-document.addEventListener("mousemove",e=>{
-
-if(!segurandoBola) return;
-
-const campoRect =
-campo.getBoundingClientRect();
-
-let x =
-e.clientX - campoRect.left;
-
-let y =
-e.clientY - campoRect.top;
-
-bola.style.left = x + "px";
-bola.style.top = y + "px";
-
-/* GOL */
-
-if(
-x > campo.clientWidth/2 - 90 &&
-x < campo.clientWidth/2 + 90 &&
-(
-y < 40 ||
-y > campo.clientHeight - 40
-)
-){
-
-mostrarGol();
-
-}
-
-});
-
-/* ========================================= */
-/* GOL */
-/* ========================================= */
-
-function mostrarGol(){
-
-const texto =
-document.getElementById(
-"golTexto"
-);
-
-texto.style.display = "block";
-
-document.getElementById(
-"torcida"
-).play();
-
-setTimeout(()=>{
-
-texto.style.display = "none";
-
-},3000);
-
-}
-
-/* ========================================= */
-/* SIMULAR PARTIDA */
-/* ========================================= */
-
-function simularPartida(){
-
-const golsBrasil =
-Math.floor(Math.random()*6);
-
-const golsArgentina =
-Math.floor(Math.random()*4);
-
-document.getElementById(
-"placar"
-).innerHTML =
-`BRA ${golsBrasil} x ${golsArgentina} ARG`;
-
-if(golsBrasil > golsArgentina){
-
-alert("🇧🇷 Brasil venceu!");
-
-}
-
-else if(golsArgentina > golsBrasil){
-
-alert("❌ Brasil perdeu!");
-
-}
-
-else{
-
-alert("🤝 Empate!");
-
-}
-
-}
-
-/* ========================================= */
-/* TELA PARTIDA */
-/* ========================================= */
-
-function irParaPartida(){
-
-document.getElementById(
-"telaPartida"
-).style.display = "flex";
-
-const jogadores =
-document.querySelectorAll(".jogador");
-
-const campoPartida =
-document.getElementById(
-"campoPartida"
-);
-
-campoPartida
-.querySelectorAll(".jogador")
-.forEach(j=>j.remove());
-
-jogadores.forEach(j=>{
-
-const clone =
-j.cloneNode(true);
-
-campoPartida.appendChild(clone);
-
-});
-
-}
-
-/* ========================================= */
-/* PARTIDA */
-/* ========================================= */
-
-let golsBrasil = 0;
-let golsArgentina = 0;
-
-function atualizarPlacar(){
-
-document.getElementById(
-"placarPartida"
-).innerHTML =
-`${golsBrasil} x ${golsArgentina}`;
-
-}
-
-function chutarBrasil(){
-
-const chance =
-Math.floor(Math.random()*100);
-
-if(chance > 40){
-
-golsBrasil++;
-
-mostrarGol();
-
-}
-
-atualizarPlacar();
-
-}
-
-function chutarArgentina(){
-
-const chance =
-Math.floor(Math.random()*100);
-
-if(chance > 55){
-
-golsArgentina++;
-
-mostrarGol();
-
-}
-
-atualizarPlacar();
-
-}
-
-function finalizarPartida(){
-
-let resultado = "";
-
-if(golsBrasil > golsArgentina){
-
-resultado =
-"🇧🇷 BRASIL VENCEU!";
-
-}
-
-else if(golsArgentina > golsBrasil){
-
-resultado =
-"🇦🇷 ARGENTINA VENCEU!";
-
-}
-
-else{
-
-resultado =
-"🤝 EMPATE!";
-
-}
-
-alert(resultado);
-
-document.getElementById(
-"telaPartida"
-).style.display = "none";
-
-golsBrasil = 0;
-golsArgentina = 0;
-
-atualizarPlacar();
-
-}
-
-/* ========================================= */
-/* TABELA */
-/* ========================================= */
-
-const tabela = {
-
-Brasil:{
-pts:0,pj:0,vit:0,e:0,
-der:0,gm:0,gc:0,sg:0
-},
-
-Marrocos:{
-pts:0,pj:0,vit:0,e:0,
-der:0,gm:0,gc:0,sg:0
-},
-
-Haiti:{
-pts:0,pj:0,vit:0,e:0,
-der:0,gm:0,gc:0,sg:0
-},
-
-"Escócia":{
-pts:0,pj:0,vit:0,e:0,
-der:0,gm:0,gc:0,sg:0
-}
-
-};
-
-function atualizarTabela(){
-
-document.getElementById(
-"linhaBrasil"
-).innerHTML = `
-<td>1</td>
-<td>🇧🇷 Brasil</td>
-<td>${tabela.Brasil.pts}</td>
-<td>${tabela.Brasil.pj}</td>
-<td>${tabela.Brasil.vit}</td>
-<td>${tabela.Brasil.e}</td>
-<td>${tabela.Brasil.der}</td>
-<td>${tabela.Brasil.gm}</td>
-<td>${tabela.Brasil.gc}</td>
-<td>${tabela.Brasil.sg}</td>
-`;
-
-document.getElementById(
-"linhaMarrocos"
-).innerHTML = `
-<td>2</td>
-<td>🇲🇦 Marrocos</td>
-<td>${tabela.Marrocos.pts}</td>
-<td>${tabela.Marrocos.pj}</td>
-<td>${tabela.Marrocos.vit}</td>
-<td>${tabela.Marrocos.e}</td>
-<td>${tabela.Marrocos.der}</td>
-<td>${tabela.Marrocos.gm}</td>
-<td>${tabela.Marrocos.gc}</td>
-<td>${tabela.Marrocos.sg}</td>
-`;
-
-document.getElementById(
-"linhaHaiti"
-).innerHTML = `
-<td>3</td>
-<td>🇭🇹 Haiti</td>
-<td>${tabela.Haiti.pts}</td>
-<td>${tabela.Haiti.pj}</td>
-<td>${tabela.Haiti.vit}</td>
-<td>${tabela.Haiti.e}</td>
-<td>${tabela.Haiti.der}</td>
-<td>${tabela.Haiti.gm}</td>
-<td>${tabela.Haiti.gc}</td>
-<td>${tabela.Haiti.sg}</td>
-`;
-
-document.getElementById(
-"linhaEscocia"
-).innerHTML = `
-<td>4</td>
-<td>🏴 Escócia</td>
-<td>${tabela["Escócia"].pts}</td>
-<td>${tabela["Escócia"].pj}</td>
-<td>${tabela["Escócia"].vit}</td>
-<td>${tabela["Escócia"].e}</td>
-<td>${tabela["Escócia"].der}</td>
-<td>${tabela["Escócia"].gm}</td>
-<td>${tabela["Escócia"].gc}</td>
-<td>${tabela["Escócia"].sg}</td>
-`;
-
-}
-
-/* RESULTADOS */
-
-function resultado(
-time1,
-time2,
-gols1,
-gols2
-){
-
-tabela[time1].pj++;
-tabela[time2].pj++;
-
-tabela[time1].gm += gols1;
-tabela[time1].gc += gols2;
-
-tabela[time2].gm += gols2;
-tabela[time2].gc += gols1;
-
-tabela[time1].sg =
-tabela[time1].gm -
-tabela[time1].gc;
-
-tabela[time2].sg =
-tabela[time2].gm -
-tabela[time2].gc;
-
-/* VITÓRIA */
-
-if(gols1 > gols2){
-
-tabela[time1].pts += 3;
-
-tabela[time1].vit++;
-
-tabela[time2].der++;
-
-}
-
-/* DERROTA */
-
-else if(gols2 > gols1){
-
-tabela[time2].pts += 3;
-
-tabela[time2].vit++;
-
-tabela[time1].der++;
-
-}
-
-/* EMPATE */
-
-else{
-
-tabela[time1].pts++;
-tabela[time2].pts++;
-
-tabela[time1].e++;
-tabela[time2].e++;
-
-}
-
-atualizarTabela();
-
-}
-
-/* ========================================= */
-/* START */
-/* ========================================= */
+/* INICIAR */
 
 mudarFormacao();
-
-atualizarTabela();
 
 </script>
 
