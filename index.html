@@ -272,6 +272,13 @@ background:rgba(255,255,255,.2);
 
 }
 
+.item b{
+
+font-size:16px;
+color:#ffdf00;
+
+}
+
 /* ========================================= */
 /* CAMPO */
 /* ========================================= */
@@ -495,7 +502,7 @@ rgba(255,255,255,.08);
 border:
 2px solid rgba(255,223,0,.3);
 
-font-size:22px;
+font-size:18px;
 
 font-weight:bold;
 
@@ -506,7 +513,7 @@ color:white;
 box-shadow:
 0 0 20px rgba(255,223,0,.2);
 
-min-height:90px;
+min-height:120px;
 
 display:flex;
 justify-content:center;
@@ -662,9 +669,7 @@ font-size:18px;
 
 <body>
 
-<!-- ========================================= -->
 <!-- INTRO -->
-<!-- ========================================= -->
 
 <div id="intro">
 
@@ -686,9 +691,7 @@ ULTRA FIFA EXPERIENCE
 
 </div>
 
-<!-- ========================================= -->
 <!-- TOPO -->
-<!-- ========================================= -->
 
 <div class="topo">
 
@@ -706,9 +709,7 @@ BRA 0 x 0 ARG
 
 </div>
 
-<!-- ========================================= -->
 <!-- CONTAINER -->
-<!-- ========================================= -->
 
 <div class="container">
 
@@ -754,41 +755,17 @@ Resetar Campo
 Adicionar
 </button>
 
-<!-- ========================================= -->
-<!-- SIMULADOR -->
-<!-- ========================================= -->
-
 <h2>🎮 Simulador de Partida</h2>
 
 <select id="adversario">
 
-<option value="Argentina">
-🇦🇷 Argentina
-</option>
-
-<option value="França">
-🇫🇷 França
-</option>
-
-<option value="Espanha">
-🇪🇸 Espanha
-</option>
-
-<option value="Inglaterra">
-🏴 Inglaterra
-</option>
-
-<option value="Alemanha">
-🇩🇪 Alemanha
-</option>
-
-<option value="Portugal">
-🇵🇹 Portugal
-</option>
-
-<option value="Uruguai">
-🇺🇾 Uruguai
-</option>
+<option value="Argentina">🇦🇷 Argentina</option>
+<option value="França">🇫🇷 França</option>
+<option value="Espanha">🇪🇸 Espanha</option>
+<option value="Inglaterra">🏴 Inglaterra</option>
+<option value="Alemanha">🇩🇪 Alemanha</option>
+<option value="Portugal">🇵🇹 Portugal</option>
+<option value="Uruguai">🇺🇾 Uruguai</option>
 
 </select>
 
@@ -797,9 +774,7 @@ Adicionar
 </button>
 
 <div id="resultadoPartida">
-
 AGUARDANDO PARTIDA...
-
 </div>
 
 <h2>🪑 Banco de Reservas</h2>
@@ -808,9 +783,7 @@ AGUARDANDO PARTIDA...
 
 </div>
 
-<!-- ========================================= -->
 <!-- CAMPO -->
-<!-- ========================================= -->
 
 <div class="campo" id="campo">
 
@@ -826,9 +799,7 @@ AGUARDANDO PARTIDA...
 
 </div>
 
-<!-- ========================================= -->
 <!-- SOM -->
-<!-- ========================================= -->
 
 <audio id="torcida" loop>
 
@@ -844,19 +815,35 @@ AGUARDANDO PARTIDA...
 
 const jogadores = [
 
-["Alisson",1,"GOL",89],
-["Ederson",23,"GOL",88],
-["Marquinhos",4,"ZAG",87],
-["Bremer",3,"ZAG",86],
-["Danilo",2,"LD",83],
-["Alex Sandro",6,"LE",82],
-["Casemiro",5,"VOL",84],
-["Bruno Guimarães",8,"MEI",86],
-["Lucas Paquetá",10,"MEI",85],
-["Raphinha",11,"ATA",87],
-["Vinicius Jr.",7,"ATA",91],
-["Neymar",10,"ATA",90],
-["Endrick",9,"ATA",82]
+["Alisson",1,"GOL",89,"Liverpool"],
+["Ederson",23,"GOL",88,"Fenerbahçe"],
+["Weverton",12,"GOL",84,"Grêmio"],
+
+["Alex Sandro",6,"LE",82,"Flamengo"],
+["Bremer",3,"ZAG",86,"Juventus"],
+["Danilo",2,"LD",83,"Flamengo"],
+["Douglas Santos",16,"LE",81,"Zenit"],
+["Gabriel Magalhães",14,"ZAG",87,"Arsenal"],
+["Ibañez",15,"ZAG",84,"Al-Ahli"],
+["Léo Pereira",4,"ZAG",82,"Flamengo"],
+["Marquinhos",13,"ZAG",87,"PSG"],
+["Wesley",22,"LD",80,"Roma"],
+
+["Bruno Guimarães",8,"MEI",86,"Newcastle"],
+["Casemiro",5,"VOL",84,"Manchester United"],
+["Danilo Santos",17,"VOL",79,"Botafogo"],
+["Fabinho",18,"VOL",83,"Al-Ittihad"],
+["Lucas Paquetá",10,"MEI",85,"Flamengo"],
+
+["Endrick",9,"ATA",82,"Lyon"],
+["Gabriel Martinelli",11,"PE",86,"Arsenal"],
+["Igor Thiago",19,"ATA",80,"Brentford"],
+["Luiz Henrique",20,"PD",83,"Zenit"],
+["Matheus Cunha",21,"ATA",84,"Manchester United"],
+["Neymar",10,"ATA",90,"Santos"],
+["Raphinha",7,"PD",87,"Barcelona"],
+["Rayan",24,"ATA",78,"Bournemouth"],
+["Vini Jr.",7,"PE",91,"Real Madrid"]
 
 ];
 
@@ -878,7 +865,10 @@ document.createElement("div");
 div.className = "item";
 
 div.innerHTML =
-`${j[0]} (${j[2]}) - OVR ${j[3]}`;
+`
+<b>${j[0]}</b><br>
+${j[4]} • ${j[2]} • OVR ${j[3]}
+`;
 
 div.onclick = ()=>{
 
@@ -939,16 +929,12 @@ ${pos}
 
 campo.appendChild(jogador);
 
-/* REMOVER */
-
 jogador.querySelector(".remover")
 .onclick = ()=>{
 
 jogador.remove();
 
 };
-
-/* DRAG */
 
 let segurando = false;
 
@@ -1177,12 +1163,12 @@ criarJogador(
 );
 
 criarJogador(
-"Vinicius Jr.",7,"PE",91,
+"Vini Jr.",7,"PE",91,
 "18%","20%"
 );
 
 criarJogador(
-"Endrick",9,"ATA",82,
+"Neymar",10,"ATA",90,
 "10%","45%"
 );
 
@@ -1204,11 +1190,23 @@ document.getElementById("adversario").value;
 
 let soma = 0;
 
-document
-.querySelectorAll(".overall")
-.forEach(o=>{
+let nomesJogadores = [];
 
-soma += Number(o.innerHTML);
+document
+.querySelectorAll(".jogador")
+.forEach(j=>{
+
+const overall =
+Number(
+j.querySelector(".overall").innerHTML
+);
+
+const nome =
+j.querySelector(".nome").innerHTML;
+
+soma += overall;
+
+nomesJogadores.push(nome);
 
 });
 
@@ -1254,8 +1252,46 @@ golsBrasil = 5;
 if(golsAdv > 5)
 golsAdv = 5;
 
+/* ARTILHEIROS */
+
+let eventos = [];
+
+for(let i=0;i<golsBrasil;i++){
+
+const jogadorGol =
+nomesJogadores[
+Math.floor(
+Math.random() *
+nomesJogadores.length
+)
+];
+
+const minuto =
+Math.floor(Math.random()*90)+1;
+
+eventos.push(
+`${minuto}' ⚽ ${jogadorGol}`
+);
+
+}
+
+eventos.sort();
+
+/* RESULTADO */
+
 const texto =
-`🇧🇷 Brasil ${golsBrasil} x ${golsAdv} ${adversario}`;
+`
+<div>
+<h2>
+🇧🇷 Brasil ${golsBrasil} x ${golsAdv} ${adversario}
+</h2>
+
+<br>
+
+${eventos.join("<br>")}
+
+</div>
+`;
 
 document.getElementById(
 "resultadoPartida"
@@ -1265,8 +1301,6 @@ document.querySelector(
 ".placar"
 ).innerHTML =
 `BRA ${golsBrasil} x ${golsAdv} ${adversario.substring(0,3).toUpperCase()}`;
-
-/* GOL */
 
 const gol =
 document.createElement("div");
@@ -1298,8 +1332,6 @@ setTimeout(()=>{
 gol.remove();
 
 },2000);
-
-/* SOM */
 
 document
 .getElementById("torcida")
