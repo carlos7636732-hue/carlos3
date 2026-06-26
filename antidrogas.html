@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prevenção às Drogas</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#0f766e);
+color:white;
+}
+
+header{
+text-align:center;
+padding:40px;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(8px);
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+header h1{
+font-size:42px;
+margin-bottom:10px;
+}
+
+header p{
+font-size:18px;
+opacity:.9;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+padding:40px 0;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+color:#222;
+border-radius:18px;
+padding:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+}
+
+.card h2{
+color:#1565c0;
+margin-bottom:15px;
+}
+
+.card p{
+line-height:1.6;
+}
+
+section{
+margin-top:50px;
+}
+
+button{
+background:#16a34a;
+color:white;
+border:none;
+padding:15px 30px;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+background:#15803d;
+transform:scale(1.05);
+}
+
+.quiz{
+background:white;
+color:black;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+.quiz h2{
+margin-bottom:20px;
+color:#1565c0;
+}
+
+.alternativa{
+margin:10px 0;
+}
+
+footer{
+margin-top:50px;
+text-align:center;
+padding:25px;
+background:rgba(0,0,0,.4);
+}
+
+#resultado{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+}
+
+.info{
+margin-top:50px;
+background:rgba(255,255,255,.1);
+padding:30px;
+border-radius:20px;
+line-height:1.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🚫 Prevenção às Drogas</h1>
+
+<p>Diga SIM à vida e NÃO às drogas.</p>
+
+</header>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+
+<h2>📚 O que são drogas?</h2>
+
+<p>
+As drogas são substâncias que podem alterar o funcionamento do cérebro e do organismo.
+Quando usadas de forma inadequada, podem causar dependência e diversos problemas de saúde.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>⚠️ Consequências</h2>
+
+<p>
+
+• Problemas físicos<br>
+• Doenças mentais<br>
+• Dificuldades na escola<br>
+• Violência<br>
+• Problemas familiares<br>
+• Dependência química
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>❤️ Como prevenir?</h2>
+
+<p>
+
+✔ Praticar esportes<br>
+✔ Conversar com a família<br>
+✔ Ter amizades saudáveis<br>
+✔ Buscar informação<br>
+✔ Dizer NÃO quando necessário
+
+</p>
+
+</div>
+
+</div>
+
+<div class="info">
+
+<h2>💙 Mensagem</h2>
+
+<p>
+
+A prevenção é a melhor forma de combater o uso de drogas.
+Informação, diálogo e apoio da família e da escola ajudam os jovens a fazer escolhas conscientes.
+
+Lembre-se:
+
+<strong>
+Sua vida vale muito mais.
+</strong>
+
+</p>
+
+</div>
+
+<section>
+
+<div class="quiz">
+
+<h2>🎯 Quiz</h2>
+
+<p><strong>Qual é a melhor maneira de prevenir o uso de drogas?</strong></p>
+
+<div class="alternativa">
+<input type="radio" name="quiz" value="0">
+ Ignorar o assunto
+</div>
+
+<div class="alternativa">
+<input type="radio" name="quiz" value="1">
+ Buscar informação e fazer escolhas saudáveis
+</div>
+
+<div class="alternativa">
+<input type="radio" name="quiz" value="0">
+ Experimentar para conhecer
+</div>
+
+<br>
+
+<button onclick="corrigir()">
+Ver Resultado
+</button>
+
+<div id="resultado"></div>
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+Projeto Educativo • Prevenção às Drogas
+
+</footer>
+
+<script>
+
+function corrigir(){
+
+let resposta=document.querySelector('input[name="quiz"]:checked');
+
+if(!resposta){
+
+alert("Escolha uma alternativa!");
+
+return;
+
+}
+
+if(resposta.value=="1"){
+
+document.getElementById("resultado").innerHTML=
+"✅ Parabéns! A informação e as escolhas saudáveis são as melhores formas de prevenção.";
+
+document.getElementById("resultado").style.color="green";
+
+}else{
+
+document.getElementById("resultado").innerHTML=
+"❌ Resposta incorreta. A prevenção acontece por meio da informação, do diálogo e de hábitos saudáveis.";
+
+document.getElementById("resultado").style.color="red";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
