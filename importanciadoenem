@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Importância do ENEM</title>
+<style>
+:root{--bg:#f6f8fc;--card:#fff;--text:#16202e;--muted:#5a6678;--accent:#1d4ed8;--accent2:#f59e0b;--line:#e2e8f0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1420;--card:#172033;--text:#eef2f9;--muted:#9fb0c7;--accent:#6ea0ff;--accent2:#fbbf24;--line:#263450}}
+:root[data-theme="dark"]{--bg:#0e1420;--card:#172033;--text:#eef2f9;--muted:#9fb0c7;--accent:#6ea0ff;--accent2:#fbbf24;--line:#263450}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+header{padding:64px 0 40px;text-align:center}
+.tag{display:inline-block;background:var(--accent);color:#fff;padding:4px 14px;border-radius:99px;font-size:.85rem;font-weight:600}
+h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.1;margin:18px 0 12px}
+h1 span{color:var(--accent)}
+.lead{max-width:640px;margin:0 auto;color:var(--muted);font-size:1.1rem}
+h2{font-size:1.6rem;margin:48px 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card .ico{font-size:1.8rem}
+.card h3{margin:8px 0 6px;font-size:1.1rem}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
+.areas{display:flex;flex-wrap:wrap;gap:10px}
+.areas li{list-style:none;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent2);border-radius:10px;padding:10px 16px}
+ul.areas{padding:0;margin:0}
+.tips{padding-left:20px;color:var(--muted)}
+.tips li{margin:6px 0}
+.tips b{color:var(--text)}
+.qr{margin:56px 0;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:center;text-align:center}
+#qrcode{background:#fff;padding:14px;border-radius:12px;min-width:200px;min-height:200px;display:flex;align-items:center;justify-content:center;color:#000}
+.qr h2{margin:0 0 6px}
+.qr p{margin:0;color:var(--muted)}
+#link{word-break:break-all;font-size:.85rem;margin-top:10px;display:block;color:var(--accent)}
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:0 0 40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Exame Nacional do Ensino Médio</span>
+  <h1>A importância do <span>ENEM</span></h1>
+  <p class="lead">Mais que uma prova, o ENEM é a principal porta de entrada para o ensino superior no Brasil e pode mudar o rumo do seu futuro.</p>
+</header>
+
+<h2>Por que o ENEM é tão importante?</h2>
+<div class="grid">
+  <div class="card"><div class="ico">🎓</div><h3>Acesso à universidade</h3><p>A nota é usada no SISU para disputar vagas em universidades públicas federais e estaduais de todo o país.</p></div>
+  <div class="card"><div class="ico">💸</div><h3>Bolsas e financiamento</h3><p>Abre caminho para bolsas do ProUni e para o financiamento estudantil do FIES em instituições privadas.</p></div>
+  <div class="card"><div class="ico">🌍</div><h3>Oportunidades fora do país</h3><p>Algumas universidades de Portugal também aceitam a nota do ENEM em seus processos seletivos.</p></div>
+  <div class="card"><div class="ico">🧭</div><h3>Democratização do ensino</h3><p>Uma única prova nacional permite que estudantes de diferentes regiões concorram em condições mais próximas.</p></div>
+  <div class="card"><div class="ico">📈</div><h3>Diagnóstico da educação</h3><p>Os resultados ajudam a avaliar a qualidade do ensino médio e orientam políticas públicas e escolas.</p></div>
+  <div class="card"><div class="ico">🧠</div><h3>Formação cidadã</h3><p>Valoriza interpretação, raciocínio e senso crítico, e não apenas a memorização de conteúdos.</p></div>
+</div>
+
+<h2>O que o ENEM avalia</h2>
+<ul class="areas">
+  <li>📖 Linguagens, Códigos e suas Tecnologias</li>
+  <li>➗ Matemática e suas Tecnologias</li>
+  <li>🌎 Ciências Humanas e suas Tecnologias</li>
+  <li>🔬 Ciências da Natureza e suas Tecnologias</li>
+  <li>✍️ Redação (nota de 0 a 1000)</li>
+</ul>
+
+<h2>Dicas para se preparar</h2>
+<ul class="tips">
+  <li><b>Estude com um cronograma:</b> divida os conteúdos por semana e respeite os descansos.</li>
+  <li><b>Resolva provas anteriores:</b> elas mostram o estilo das questões e dos temas mais cobrados.</li>
+  <li><b>Pratique redação toda semana:</b> treine a estrutura dissertativo-argumentativa e as cinco competências.</li>
+  <li><b>Cuide da saúde:</b> durma bem, se alimente direito e controle a ansiedade.</li>
+</ul>
+
+<section class="qr">
+  <div id="qrcode" aria-label="QR code desta página"></div>
+  <div>
+    <h2>Escaneie e acesse</h2>
+    <p>Aponte a câmera do celular para o QR code e abra esta página <b>Importância do ENEM</b>.</p>
+    <a id="link" href="#"></a>
+  </div>
+</section>
+</div>
+<footer>Importância do ENEM · informe-se sempre no site oficial do INEP</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+(function(){
+  var url = location.href.split('#')[0];
+  var l = document.getElementById('link');
+  l.href = url; l.textContent = url;
+  try {
+    var qr = qrcode(0, 'M');
+    qr.addData(url);
+    qr.make();
+    var box = document.getElementById('qrcode');
+    var n = qr.getModuleCount(), m = 2, d = '';
+    for (var r = 0; r < n; r++) {
+      for (var c = 0; c < n; c++) {
+        if (qr.isDark(r, c)) d += 'M' + (c + m) + ' ' + (r + m) + 'h1v1h-1z';
+      }
+    }
+    var size = n + m * 2;
+    box.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + size + ' ' + size + '" width="200" height="200" shape-rendering="crispEdges" style="display:block">' +
+      '<rect width="' + size + '" height="' + size + '" fill="#ffffff"/>' +
+      '<path d="' + d + '" fill="#000000"/></svg>';
+  } catch(e) {
+    document.getElementById('qrcode').textContent = 'QR code indisponível';
+  }
+})();
+</script>
+</body>
+</html>importancia-do-enem
